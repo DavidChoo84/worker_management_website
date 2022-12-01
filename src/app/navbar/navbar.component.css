@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.navbar{
+    background-color: white!important;
+}
+
+.navbar-title{
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 900;
+    font-size: 25px;
+    color: #1481d3;
+}
+
+.navbar-title:focus{
+    color: black;
+}
+
+.navbar-brand{
+    filter: invert(34%) sepia(59%) saturate(2653%) hue-rotate(187deg) brightness(94%) contrast(84%)
+}
+
+.navbar-brand:hover{
+    filter: invert(99%) sepia(83%) saturate(0%) hue-rotate(357deg) brightness(105%) contrast(100%);
+}

@@ -1,0 +1,27 @@
+.header{
+    margin-top: 59px;
+}
+
+.background{
+    background: #1481d3;
+    width: auto;
+    height: 200px;
+}
+
+.name{
+    padding-top: 100px;
+}
+
+h4{
+    font-weight: 700;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+p{
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+}

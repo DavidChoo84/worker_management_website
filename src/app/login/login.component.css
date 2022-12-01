@@ -1,0 +1,66 @@
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #1481D3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.background{
+  background: url('src/assets/images/login-bg-pic.jpg') no-repeat center center fixed;
+  height:40em; background-size:cover; width:auto;
+  background-position:50% 50%;
+}
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  text-align: center;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+
+.box {
+  border-radius: 50px;
+  position: absolute; /* Stay in place */
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 400px; /* Full width */
+  height: 400px; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #f2f2f2;
+  padding: 1em 2em;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+}
