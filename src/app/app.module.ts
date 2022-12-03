@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderNameIdComponent } from './header-name-id/header-name-id.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { ZoneDetailComponent } from './zone-detail/zone-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { EmployeeComponent } from './employee/employee.component';
     HeaderNameIdComponent,
     SideMenuComponent,
     EmployeeComponent,
+    ZoneDetailComponent,
   ],
   imports: [
     BrowserModule,
