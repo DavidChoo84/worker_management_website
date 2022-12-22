@@ -1,0 +1,191 @@
+.content{
+    padding-top: 65px;
+}
+h3{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.hyperlink{
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+h5{
+    font-size: 18px;
+    font-weight: 700;
+    padding-top: 5px;
+}
+
+.card-header{
+    background-color: white;
+}
+.card-header p.name{
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    color: black;
+}
+
+.card-header p.date{
+    margin: 0!important;
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
+
+.card-body p{
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
+
+.card-body p.check-in-amt{
+    font-weight: 700;
+    font-size: 15px;
+    color: #1481d3;
+}
+
+.card-body .btn{
+    width: 100%!important;
+    border-radius: 50px;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+p{
+    font-size: 15px;
+    font-weight: 700;
+    color: blue;
+    cursor: pointer;
+}
+
+.card-body a{
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+}
+
+.name{
+    font-size: 15px;
+    font-weight: 700;
+    color: blue;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.date{
+    font-size: 15px;
+    font-weight: 700;
+    color: blue;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn{
+    max-width: 50%;
+    text-align: center!important;
+}
+
+.to{
+    padding-top: 15px;
+}
+
+label{
+    font-size: 15px;
+    font-weight: 700;
+    color: grey;
+    cursor: pointer;
+}
+
+input{
+    font-size: 15px;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+}
+table{
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+  }
+
+th{
+    background-color: grey;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+td{
+    font-weight: 800;
+    font-size: 15px;
+    margin: 10px;
+}
+
+span{
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.mat-paginator{
+    font-weight: 800;
+    font-size: 15px;
+    background-color: grey;
+    border: 2px solid black;
+}
+
+img{
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+}
+
+.mobile-label {
+    display: none;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+  }
+  
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+  
+.mobile-label {
+    display: none;
+}
+  
+@media(max-width: 600px) {
+    .mobile-label {
+        width: 80px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-row { 
+        flex-direction: column;
+        align-items: start;
+        padding: 8px 24px;
+    }
+}

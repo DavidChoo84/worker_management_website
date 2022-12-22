@@ -14,7 +14,7 @@ export class ZoneDetailComponent implements OnInit {
 
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'hahaha';
+  value = 'Z001';
   
   panelOpenState: boolean = false;
   constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
