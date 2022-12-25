@@ -9,8 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderNameIdComponent } from './header-name-id/header-name-id.component';
-import { SideMenuComponent } from './side-menu/side-menu.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ZoneDetailComponent } from './zone-detail/zone-detail.component';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -27,16 +25,16 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ZoneComponent } from './zone/zone.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    HeaderNameIdComponent,
-    SideMenuComponent,
     EmployeeComponent,
     ZoneDetailComponent,
+    ZoneComponent,
   ],
   imports: [
     BrowserModule,
