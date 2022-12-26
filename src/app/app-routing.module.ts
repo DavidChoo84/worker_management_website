@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'',redirectTo:'zone',pathMatch:'full'},
   {path:'login', component:LoginComponent},
   {path:'zone_detail', component:ZoneDetailComponent},
-  {path: 'zone', component:ZoneComponent}
+  {path: 'zone', component:ZoneComponent},
   {path: 'zone_crud', loadChildren: ()=>import('./zonecrud/crud.module').then(m=>m.CRUDModule)}
 ];
 
