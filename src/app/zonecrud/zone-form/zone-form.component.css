@@ -1,6 +1,6 @@
-.row{
+/* .row{
     margin-top: 30px;
-}
+} */
 
 .col-lg-6{
     margin-top: 60px;
@@ -38,4 +38,45 @@
     border-style: double;
     padding : 30px;
     border-color: #1481D3;
+}
+
+/* New CSS */
+
+.content{
+    padding-top: 65px;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.hyperlink{
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+hr{
+    padding-bottom: 15px!important  ;
+    margin: 0!important;
+}
+
+label{
+    font-size: 20px;
+    font-weight: 700;
+    color: grey;
+    cursor: pointer;
+}
+
+.btn{
+    font-size: 20px;
+    font-weight: 700;   
+}
+
+i{
+    padding-right: 5px;
 }
