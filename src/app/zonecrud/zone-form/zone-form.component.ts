@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router, Routes } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { ZonecrudService } from '../zonecrud.service';
-
+import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-zone-form',
   templateUrl: './zone-form.component.html',
@@ -26,7 +26,8 @@ export class ZoneFormComponent implements OnInit {
   constructor(public crudService: ZonecrudService,
               public formBuilder: FormBuilder,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private primengConfig: PrimeNGConfig) {
 
               this.zoneForm = this.formBuilder.group({
                   zone_id:[''],
@@ -42,6 +43,7 @@ export class ZoneFormComponent implements OnInit {
     this.loadSiteName();
     this.alertmsg=false;
     this.createZoneForm();
+    this.primengConfig.ripple = true;
 
     if(this.activatedRoute.snapshot.params['zoneID']){
       let zoneID =this.activatedRoute.snapshot.params['zoneID'];
