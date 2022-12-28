@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'zone_detail', component:ZoneDetailComponent},
   {path: 'zone', component:ZoneComponent},
+  {path: 'employee', component:EmployeeComponent},
   {path: 'zone_crud', loadChildren: ()=>import('./zonecrud/crud.module').then(m=>m.CRUDModule)}
 ];
 
