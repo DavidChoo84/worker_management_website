@@ -3,6 +3,7 @@ import { ActivatedRoute, Route, Router, Routes } from '@angular/router';
 import { ZonecrudService } from '../zonecrud.service';
 import { FormControl, FormGroup} from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-zone-details',
@@ -14,6 +15,7 @@ export class ZoneDetailsComponent implements OnInit {
   zoneId: any;
   zoneForm1!: FormGroup;
   imageInfos: any;
+  url:any;
 
   constructor(private crudService: ZonecrudService,
               private activatedRoute: ActivatedRoute) {
@@ -45,6 +47,9 @@ export class ZoneDetailsComponent implements OnInit {
         this.zoneForm1.controls['zone_qrcode'].setValue(res.zone_qr);
         this.zoneId = res.zone_id;
         this.imageInfos = res.zone_qr;
+        this.url = environment.API_EndPoint + 'uploads/'+this.imageInfos;
+        console.log(this.url);
+
       })
 
       // this.crudService.getFiles().subscribe(res=>{
