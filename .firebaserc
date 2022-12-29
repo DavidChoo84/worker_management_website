@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "buloke-47e9d": {
+      "hosting": {
+        "buleko": [
+          "buloke-47e9d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "buloke-47e9d"
+  }
+}

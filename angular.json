@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "buleko:build:production",
+            "firebaseProject": "buloke-47e9d",
+            "firebaseHostingSite": "buloke-47e9d"
+          }
         }
       }
     }
