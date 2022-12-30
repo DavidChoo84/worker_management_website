@@ -12,6 +12,11 @@ export class ZoneComponent implements OnInit {
   result: string;
   siteNameList : any;
   sitename : any;
+  checkinlist : any;
+  checkinNo : any ;
+  sitecheck : any;
+  checkin : any;
+  arrnew : any[] = [];
 
   constructor(private crudService: ZonehomeService) {
       this.date = this.time.toLocaleDateString();
@@ -29,8 +34,19 @@ export class ZoneComponent implements OnInit {
   getSiteName(){
     this.siteNameList = this.crudService.loadSites().subscribe(res=>{
       this.sitename = res;
+      for (var i = 0; i < this.sitename.length; i++) {
+        this.arrnew.push(this.sitename[i]);
+      }
+      console.log(this.arrnew);
       // this.rowData = res;
     })
+
+    this.checkinlist = this.crudService.loadCheckIn().subscribe(res=>{
+      this.checkinNo = res;
+
+      // this.rowData = res;
+    })
+
   };
 
 }
