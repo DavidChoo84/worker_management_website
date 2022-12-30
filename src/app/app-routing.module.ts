@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SiteComponent } from './site/site.component';
 
 import { ZoneDetailComponent } from './zone-detail/zone-detail.component';
 import { ZoneComponent } from './zone/zone.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'zone_detail', component:ZoneDetailComponent},
   {path: 'zone', component:ZoneComponent},
   {path: 'employee', component:EmployeeComponent},
+  {path: 'site', component:SiteComponent},
   {path: 'zone_crud', loadChildren: ()=>import('./zonecrud/crud.module').then(m=>m.CRUDModule)}
 ];
 
