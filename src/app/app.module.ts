@@ -49,6 +49,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
+import { SiteComponent } from './site/site.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
     EmployeeComponent,
     ZoneDetailComponent,
     ZoneComponent,
+    SiteComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,6 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
     MatPaginatorModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideMessaging(() => getMessaging())
-
   ],
   providers: [],
   bootstrap: [AppComponent]

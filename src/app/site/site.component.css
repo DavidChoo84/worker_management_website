@@ -1,0 +1,71 @@
+.content{
+    padding-top: 65px;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.hyperlink{
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.card-header{
+    background-color: white;
+}
+
+.card-header p.name{
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    color: black;
+}
+
+.card-header p.date{
+    margin: 0!important;
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
+
+.card-body p{
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
+
+.card-body p.check-in-amt{
+    font-weight: 700;
+    font-size: 15px;
+    color: #1481d3;
+}
+
+.card-body .btn{
+    width: 100%!important;
+    border-radius: 50px;
+}
+
+p{
+    font-size: 15px;
+    font-weight: 700;
+    /* padding-top: 10px; */
+    color: blue;
+    cursor: pointer;
+}
+
+.card-body a{
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+}
+
+hr{
+    padding-bottom: 15px!important  ;
+    margin: 0!important;
+}
