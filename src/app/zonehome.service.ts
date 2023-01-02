@@ -12,11 +12,6 @@ export class ZonehomeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  loadSites(){
-    const url = environment.API_EndPoint + 'homeview.php';
-    return this.httpClient.get(url).pipe(map(data => data));
-  }
-
   loadCheckIn(){
     const url = environment.API_EndPoint + 'checkinview.php';
     return this.httpClient.get(url).pipe(map(data => data));

@@ -23,14 +23,14 @@ export class SiteComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getSiteName();
+    // this.getSiteName();
   }
 
-  getSiteName(){
-    this.siteNameList = this.crudService.loadSites().subscribe(res=>{
-      this.sitename = res;
-      // this.rowData = res;
-    })
-  };
+  // getSiteName(){
+  //   this.siteNameList = this.crudService.loadSites().subscribe(res=>{
+  //     this.sitename = res;
+  //     // this.rowData = res;
+  //   })
+  // };
 
 }
