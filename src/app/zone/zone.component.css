@@ -20,7 +20,7 @@ h3{
     background-color: white;
 }
 
-.card-header p.name{
+.card-header p.site_name{
     margin: 0;
     font-weight: 700;
     font-size: 20px;
@@ -34,6 +34,12 @@ h3{
     color: grey;
 }
 
+.card-header p.zone_name{
+    margin: 0;
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
 .card-body p{
     font-weight: 700;
     font-size: 15px;
