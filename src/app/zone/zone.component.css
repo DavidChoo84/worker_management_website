@@ -40,6 +40,14 @@ h3{
     font-size: 15px;
     color: grey;
 }
+
+.card-header p.zone_id{
+    margin: 0;
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
+
 .card-body p{
     font-weight: 700;
     font-size: 15px;
