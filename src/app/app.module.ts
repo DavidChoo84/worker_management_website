@@ -1,10 +1,10 @@
 // @ANGULAR ITEM
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes }   from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
+import {FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // MAIN ITEM
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { HomeComponent } from './home/home.component';
 
 // ANGULAR MATERIAL;
 import { MatButtonModule } from '@angular/material/button';
@@ -59,10 +60,14 @@ import { SiteComponent } from './site/site.component';
     NavbarComponent,
     EmployeeComponent,
     ZoneDetailComponent,
+    HomeComponent,
     ZoneComponent,
     SiteComponent,
   ],
   imports: [
+    FormsModule,
+HttpClientModule,
+ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
