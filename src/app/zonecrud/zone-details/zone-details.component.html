@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../../zone-list']">Back</button>
+            </div>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-8 p-5">
+              
+            <img src= "{{this.url}}" class="card-img-top">
+            
+            <form [formGroup]="zoneForm1">
+                <div class="mb-3">
+                <label for="zone-id" class="form-label">Zone ID</label>
+                <input formControlName="zone_id" 
+                    readonly
+                    type="text" 
+                    class="form-control" 
+                    id="zone-id"               
+                >
+                </div>
+                <div class="mb-3">
+                <label for="zone-name" class="form-label">Zone Name</label>
+                <input formControlName="zone_name" 
+                    readonly
+                    type="text" 
+                    class="form-control" 
+                    id="zone-name"
+                >
+                <label for="zone-qrcode" class="form-label">Zone QR Code</label>
+                <input formControlName="zone_qrcode" 
+                    readonly
+                    type="text" 
+                    class="form-control" 
+                    id="zone-qrcode"
+                >
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    
+    

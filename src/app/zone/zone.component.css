@@ -1,6 +1,7 @@
 .content{
     padding-top: 65px;
 }
+
 h3{
     font-size: 30px;
     font-weight: 700;
@@ -15,16 +16,11 @@ h3{
     cursor: pointer;
 }
 
-h5{
-    font-size: 18px;
-    font-weight: 700;
-    padding-top: 5px;
-}
-
 .card-header{
     background-color: white;
 }
-.card-header p.name{
+
+.card-header p.site_name{
     margin: 0;
     font-weight: 700;
     font-size: 20px;
@@ -38,6 +34,12 @@ h5{
     color: grey;
 }
 
+.card-header p.zone_name{
+    margin: 0;
+    font-weight: 700;
+    font-size: 15px;
+    color: grey;
+}
 .card-body p{
     font-weight: 700;
     font-size: 15px;
@@ -55,15 +57,10 @@ h5{
     border-radius: 50px;
 }
 
-h3{
-    font-size: 30px;
-    font-weight: 700;
-    padding-top: 10px;
-}
-
 p{
     font-size: 15px;
     font-weight: 700;
+    /* padding-top: 10px; */
     color: blue;
     cursor: pointer;
 }
@@ -72,51 +69,6 @@ p{
     font-weight: 700;
     font-size: 15px;
     color: white;
-}
-
-.name{
-    font-size: 15px;
-    font-weight: 700;
-    color: blue;
-    cursor: pointer;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.date{
-    font-size: 15px;
-    font-weight: 700;
-    color: blue;
-    cursor: pointer;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.btn{
-    max-width: 50%;
-    text-align: center!important;
-}
-
-.to{
-    padding-top: 15px;
-}
-
-label{
-    font-size: 15px;
-    font-weight: 700;
-    color: grey;
-    cursor: pointer;
-}
-
-input{
-    font-size: 15px;
-    font-weight: 700;
-    color: black;
-    cursor: pointer;
-}
-
-.bshadow {
-    width: 10cm;
 }
 
 hr{

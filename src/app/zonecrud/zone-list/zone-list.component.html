@@ -1,0 +1,53 @@
+<p>zone-list works!</p>
+<div class="container">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-10 col-lg-offset-1">
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../create-zone']">Back</button>
+        </div>
+      <h1>Zone List</h1>
+      
+      <div class="col-3">
+      <div class="col-9">
+      <table id= "zlist" class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th *ngFor="let header of headers" scope="col">
+              {{ header | titlecase }}
+          </th>
+        </tr>
+        </thead>
+  
+        <tbody>
+        <tr *ngFor="let data of zoneList" scope="row">
+          <td>
+            {{ data.zone_id }}
+          </td>
+          <td>
+            {{ data.zone_name }}
+          </td>
+          <td>
+            {{ data.zone_qr }}
+          </td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <button [routerLink]="['/zone_crud','view-zone-details', data.zone_id]" id='btn' type="button" class="btn btn-success">Details</button>
+              <button [routerLink]="['/zone_crud','update-zone', data.zone_id]" id='btn1' type="button" class="btn btn-warning">Edit</button>
+              <button  (click)='deleteProduct(data.zone_id,data.zone_qr)'id='btn2' type="button" class="btn btn-danger">Delete</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+   
+  
+  

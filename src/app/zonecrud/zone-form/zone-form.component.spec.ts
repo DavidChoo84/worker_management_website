@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideMenuComponent } from './side-menu.component';
+import { ZoneFormComponent } from './zone-form.component';
 
-describe('SideMenuComponent', () => {
-  let component: SideMenuComponent;
-  let fixture: ComponentFixture<SideMenuComponent>;
+describe('ZoneFormComponent', () => {
+  let component: ZoneFormComponent;
+  let fixture: ComponentFixture<ZoneFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SideMenuComponent ]
+      declarations: [ ZoneFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SideMenuComponent);
+    fixture = TestBed.createComponent(ZoneFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

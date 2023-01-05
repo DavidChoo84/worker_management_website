@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderNameIdComponent } from './header-name-id.component';
+import { ZoneDetailsComponent } from './zone-details.component';
 
-describe('HeaderNameIdComponent', () => {
-  let component: HeaderNameIdComponent;
-  let fixture: ComponentFixture<HeaderNameIdComponent>;
+describe('ZoneDetailsComponent', () => {
+  let component: ZoneDetailsComponent;
+  let fixture: ComponentFixture<ZoneDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderNameIdComponent ]
+      declarations: [ ZoneDetailsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderNameIdComponent);
+    fixture = TestBed.createComponent(ZoneDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

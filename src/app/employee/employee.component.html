@@ -1,1 +1,74 @@
-<p>employee works!</p>
+
+      <div class="content">
+          <div class="row align-items-center">
+              <div class="col-12">
+                  <a class="hyperlink" routerLink="/zone">Employee List</a>
+              </div>
+              <div class="col-6">
+                  <h3>Employee List</h3>
+              </div>
+              <div class="col-6">
+                  <p class="text-end"><span>+ Add Employee</span></p>
+              </div>
+          </div>
+          <hr>
+          <!-- <div class="card">
+              <h5>Single Column</h5>
+              <p-table [value]="products1">
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                          <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+                          <th pSortableColumn="quantity">Quantity <p-sortIcon field="quantity"></p-sortIcon></th>
+                          <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-product>
+                      <tr>
+                          <td>{{product.code}}</td>
+                          <td>{{product.name}}</td>
+                          <td>{{product.category}}</td>
+                          <td>{{product.quantity}}</td>
+                          <td>{{product.price | currency: 'USD'}}</td>
+                      </tr>
+                  </ng-template>
+              </p-table>
+          </div> -->
+          <div class="wrapper col-12 col-xl-12 col-lg-12 col-md-12">
+              <span>Search: </span>
+              <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Filter">
+              <hr>
+              <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="photo">
+                  <th mat-header-cell *matHeaderCellDef> Photo </th>
+                  <td mat-cell *matCellDef="let element"> <img [src]="element.photo" /> </td>
+                </ng-container>
+                <ng-container matColumnDef="create">
+                  <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
+                  <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'green'}">person_add</mat-icon></td>
+                </ng-container>
+                <ng-container matColumnDef="edit">
+                  <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
+                  <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'orange'}">edit</mat-icon></td>
+                </ng-container>
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
+                  <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'red'}">delete</mat-icon></td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <!-- Angular 8 pagination -->
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+            </div>
+      </div>
