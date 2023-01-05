@@ -27,9 +27,8 @@ button:hover {
 }
 
 .background{
-  background: url('src/assets/images/login-bg-pic.jpg') no-repeat center center fixed;
-  height:40em; background-size:cover; width:auto;
-  background-position:50% 50%;
+  background: url("../../../src/assets/images/login-bg-pic.jpg") no-repeat center center fixed;
+  min-height:100vh; background-size:cover; width:100%;
 }
 .container {
   padding: 16px;
