@@ -3,6 +3,7 @@ import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api
 import {Message} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+import { ZonehomeService } from '../zonehome.service';
 
 @Component({
   selector: 'app-zone-detail',
@@ -11,13 +12,17 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
   providers: [ConfirmationService,MessageService]
 })
 export class ZoneDetailComponent implements OnInit {
+  sitename : any;
+  zoneID : any;
+  clockrecord : any;
+  assignrecord :any;
 
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   value = 'Z001';
   
   panelOpenState: boolean = false;
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
+  constructor(private crudService: ZonehomeService,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
 
   confirm1() {
     this.confirmationService.confirm({
@@ -40,5 +45,14 @@ export class ZoneDetailComponent implements OnInit {
 
   showBasicDialog() {
     this.displayBasic = true;
-}
+  }
+
+  loadZoneDetails(zoneID:any, site_name:any){
+    this.crudService.loadSiteInfo(zoneID, site_name).subscribe(res=>{
+      this.sitename = res.site_name;
+      this.zoneID = res.zone_id;
+      this.clockrecord = res.ClockRecord;
+      this.assignrecord = res.AssignRecords;
+    })
+  }
 }
