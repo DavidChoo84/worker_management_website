@@ -22,4 +22,5 @@ export class ZonehomeService {
     const url = environment.API_EndPoint + 'loadeachsite.php?zone_id=' + zoneID+ '&site_name='+ site_name;
     return this.httpClient.get<Site>(url).pipe(map(data => data));
   }
+  test(){}
 }
