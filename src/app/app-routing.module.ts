@@ -10,7 +10,6 @@ import { SiteComponent } from './site/site.component';
 
 import { ZoneComponent } from './zone/zone.component';
 const routes: Routes = [
-  
   {path: '',redirectTo:'zone',pathMatch:'full'},
   {path: 'login', component:LoginComponent},
   {path: 'zone_detail/:site_name/:zone_id', component:ZoneDetailComponent},
