@@ -4,6 +4,7 @@ import {Message} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { ZonehomeService } from '../zonehome.service';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-zone-detail',
@@ -16,13 +17,21 @@ export class ZoneDetailComponent implements OnInit {
   zoneID : any;
   clockrecord : any;
   assignrecord :any;
+  readonly time = new Date();
+  date: string;
+  result: string;
 
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'Z001';
   
   panelOpenState: boolean = false;
-  constructor(private crudService: ZonehomeService,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
+  constructor(private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
+    this.date = this.time.toLocaleDateString();
+
+      const [month, day, year] = this.date.split('/');
+
+      this.result = [day, month, year].join('/');
+  }
 
   confirm1() {
     this.confirmationService.confirm({
@@ -40,6 +49,16 @@ export class ZoneDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+
+    if(this.activatedRoute.snapshot.params['zone_id']){
+      if(this.activatedRoute.snapshot.params['site_name']){
+        let zone_id =this.activatedRoute.snapshot.params['zone_id'];
+        let site_name =this.activatedRoute.snapshot.params['site_name'];
+        if(zone_id !== '' && site_name !== ''){
+          this.loadZoneDetails(zone_id,site_name);
+        }
+      }
+    }
   }
   displayBasic: boolean;
 
@@ -47,12 +66,13 @@ export class ZoneDetailComponent implements OnInit {
     this.displayBasic = true;
   }
 
-  loadZoneDetails(zoneID:any, site_name:any){
-    this.crudService.loadSiteInfo(zoneID, site_name).subscribe(res=>{
+  loadZoneDetails(zone_id:any, site_name:any){
+    this.crudService.loadSiteInfo(zone_id, site_name).subscribe(res=>{
       this.sitename = res.site_name;
       this.zoneID = res.zone_id;
       this.clockrecord = res.ClockRecord;
       this.assignrecord = res.AssignRecords;
+      console.log(this.sitename);
     })
   }
 }
