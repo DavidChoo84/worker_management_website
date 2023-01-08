@@ -18,8 +18,8 @@ export class ZonehomeService {
     return this.httpClient.get(url).pipe(map(data => data));
   }
 
-  loadSiteInfo(zoneID:any, site_name:any): Observable<Site>{
-    const url = environment.API_EndPoint + 'loadeachsite.php?zone_id=' + zoneID+ '&site_name='+ site_name;
+  loadSiteInfo(zone_id:any, site_name:any): Observable<Site>{
+    const url = environment.API_EndPoint + 'loadeachsite.php?zone_id=' + zone_id+ '&site_name='+ site_name;
     return this.httpClient.get<Site>(url).pipe(map(data => data));
   }
 
