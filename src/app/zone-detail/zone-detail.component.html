@@ -32,7 +32,7 @@
                     </div>
                     <div class="text-center">
                         <a routerLink="/zone_detail" class="btn btn-success" (click)="showBasicDialog()">Generate QR Code</a>
-                        <p-dialog header="Mid Valley QR Code" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                        <p-dialog header="{{sitename}} QR Code" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
                             <ngx-qrcode [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="this.zoneID" cssClass="bshadow"></ngx-qrcode>
                             <ng-template pTemplate="footer">
                                 <p-button icon="pi pi-check" (click)="displayBasic=false" label="Yes" styleClass="p-button-text"></p-button>
