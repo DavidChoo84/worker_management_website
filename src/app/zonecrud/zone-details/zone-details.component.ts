@@ -48,6 +48,7 @@ export class ZoneDetailsComponent implements OnInit {
         this.zoneId = res.zone_id;
         this.imageInfos = res.zone_qr;
         this.url = environment.API_EndPoint + 'uploads/'+this.imageInfos;
+        console.log(this.zoneId);
         console.log(this.url);
 
       })

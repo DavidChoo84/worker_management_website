@@ -3,6 +3,7 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {catchError, map} from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
+import { Site } from './models/site';
 
 
 @Injectable({
@@ -12,13 +13,14 @@ export class ZonehomeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  loadSites(){
-    const url = environment.API_EndPoint + 'homeview.php';
-    return this.httpClient.get(url).pipe(map(data => data));
-  }
-
   loadCheckIn(){
     const url = environment.API_EndPoint + 'checkinview.php';
     return this.httpClient.get(url).pipe(map(data => data));
   }
+
+  loadSiteInfo(zone_id:any, site_name:any): Observable<Site>{
+    const url = environment.API_EndPoint + 'loadeachsite.php?zone_id=' + zone_id+ '&site_name='+ site_name;
+    return this.httpClient.get<Site>(url).pipe(map(data => data));
+  }
+
 }
