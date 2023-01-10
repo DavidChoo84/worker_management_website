@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  adminType: Boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {

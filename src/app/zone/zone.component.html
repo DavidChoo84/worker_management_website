@@ -11,8 +11,11 @@
         </div>
     </div>
     <hr>
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for site name and zone name">
+    <br>
+    <hr>
     <div class="row" *ngIf="sitename?.length == checkinNo?.length">
-        <div class="col-auto col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-3" *ngFor="let data of arrnew;let i=index">
+        <div class="col-auto col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-3" *ngFor="let data of arrnew | filter: searchText ;let i=index">
             <div class="card shadow p-0 bg-body rounded">
                 <div class="card-header">
                     <div class="row align-items-center mb-0">

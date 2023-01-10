@@ -17,6 +17,7 @@ export class ZoneComponent implements OnInit {
   sitecheck : any;
   checkin : any;
   arrnew : any[] = [];
+  searchText: any;
 
   constructor(private crudService: ZonehomeService) {
       this.date = this.time.toLocaleDateString();
@@ -48,5 +49,11 @@ export class ZoneComponent implements OnInit {
     })
 
   };
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.sitename.filter = filterValue;
+  }
 
 }

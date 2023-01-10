@@ -32,6 +32,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 // ANGULAR MATERIAL;
 import { MatButtonModule } from '@angular/material/button';
@@ -96,6 +98,7 @@ import { SiteComponent } from './site/site.component';
     MatSortModule,
     MatFormFieldModule,
     MatPaginatorModule,
+    Ng2SearchPipeModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideMessaging(() => getMessaging())
   ],

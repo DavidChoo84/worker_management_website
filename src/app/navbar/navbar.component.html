@@ -40,13 +40,30 @@
                 </a>
                 <ul>
                     <li>
-                        <a class="sub nav-link p-0">
+                        <a routerLink="/add-employee" class="sub nav-link p-0">
                             <i class="bi bi-person-plus-fill"></i><span class="ms-1">Add Employee</span>
                         </a> 
                     </li>
                     <li>
-                        <a href="#" class="sub nav-link p-0">
+                        <a routerLink="/employee" class="sub nav-link p-0">
                             <i class="bi bi-people-fill"></i> <span class="ms-1">All Employee</span>
+                        </a> 
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a  routerLink="/site" class="main nav-link p-0">
+                    <i class="bi bi-person-workspace"></i> <span class="ms-1">Site</span>
+                </a>
+                <ul>
+                    <li>
+                        <a routerLink="/zone" class="sub nav-link p-0">
+                            <i class="bi bi-stickies-fill"></i> <span class="ms-1">Site Summary</span>
+                        </a> 
+                    </li>
+                    <li>
+                        <a routerLink="/zone_crud/create-zone" class="sub nav-link p-0">
+                            <i class="bi bi-building-fill-add"></i><span class="ms-1">Add Site</span>
                         </a> 
                     </li>
                 </ul>
@@ -58,13 +75,15 @@
                 <ul>
                     <li>
                         <a routerLink="/zone" class="sub nav-link p-0">
-                            <i class="bi bi-stickies-fill"></i> <span class="ms-1">Overall Summary</span>
+                            <i class="bi bi-stickies-fill"></i> <span class="ms-1">Zone Summary</span>
                         </a> 
                     </li>
                     <li>
-                        <a routerLink="/zone_crud/create-zone" class="sub nav-link p-0">
-                            <i class="bi bi-building-fill-add"></i><span class="ms-1">Add Zone</span>
-                        </a> 
+                        <div *ngIf= "this.adminType">
+                            <a  routerLink="/zone" class="main nav-link p-0">
+                                <i class="bi bi-person-workspace"></i> <span class="ms-1">Add Zone</span>
+                            </a>
+                        </div> 
                     </li>
                 </ul>
             </li>
