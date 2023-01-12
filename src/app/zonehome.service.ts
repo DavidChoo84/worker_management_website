@@ -23,4 +23,24 @@ export class ZonehomeService {
     return this.httpClient.get<Site>(url).pipe(map(data => data));
   }
 
+  assignEmp(
+    zone_id: any,
+    site_name: any,
+    ):Observable<any>{
+      var formData: any = new FormData();
+      formData.append("zone_id",zone_id);
+      formData.append("zone_name",site_name);
+      const url = environment.API_EndPoint + 'create.php';
+      return this.httpClient.post(url, formData,{
+        reportProgress: true,
+        observe: 'events',
+        responseType: 'text'
+      }).pipe(
+        catchError((err: any) => {
+          alert(err.message);
+          return throwError(() => err.message);
+        })
+      )
+  }
+
 }
