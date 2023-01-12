@@ -123,3 +123,12 @@ hr{
     padding-bottom: 15px!important  ;
     margin: 0!important;
 }
+
+#alert{
+    height: 50px;
+    padding-bottom: 30px;
+}
+
+.button{
+    margin-top: 20px;
+}

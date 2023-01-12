@@ -5,6 +5,8 @@ import { PrimeNGConfig } from 'primeng/api';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { ZonehomeService } from '../zonehome.service';
 import { ActivatedRoute} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-zone-detail',
@@ -20,12 +22,14 @@ export class ZoneDetailComponent implements OnInit {
   readonly time = new Date();
   date: string;
   result: string;
+  AssignForm: FormGroup;
+  
 
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   
   panelOpenState: boolean = false;
-  constructor(private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
+  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
     this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
@@ -49,6 +53,7 @@ export class ZoneDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    this.createAssignForm();
 
     if(this.activatedRoute.snapshot.params['zone_id']){
       if(this.activatedRoute.snapshot.params['site_name']){
@@ -74,5 +79,51 @@ export class ZoneDetailComponent implements OnInit {
       this.assignrecord = res.AssignRecords;
       console.log(this.sitename);
     })
+  }
+
+  createAssignForm(){
+    this.AssignForm = this.formBuilder.group({
+      'empid': ['', Validators.compose([Validators.required, Validators.minLength(5)]) ],
+      'time': ['', Validators.compose([Validators.required]) ],
+    });
+
+  }
+
+  assignEmp(){
+
+      console.log(this.AssignForm.value.zone_id);
+      console.log(this.AssignForm.value.site_name);
+    
+      this.crudService.assignEmp(
+        this.AssignForm.value.zone_id,
+        this.AssignForm.value.site_name   
+      ).subscribe((event: HttpEvent<any>): void =>{
+        switch(event.type){
+          case HttpEventType.UploadProgress:
+            // if(event.total){
+            //   this.progress = Math.round((100 / event.total) * event.loaded);
+            //   this.msgs = `Uploaded! ${this.progress}%`;
+            // }
+            break;
+          case HttpEventType.Response:
+            // event.body;
+            // this.eventmsg = event.body;
+            // this.alert = "{\"result\":\"success1\"}File has been uploaded"; 
+            // this.alertno = "{\"error\":\"Sorry. File is already exist\"}";
+            // console.log(this.eventmsg);
+            // console.log(this.alert);
+            // if(this.eventmsg.search(this.alert) != -1){
+            // // if(this.eventmsg===this.alert){
+            //     this.alertmsg = false;
+            //     this.navigateTo('/zone_crud/zone-list');
+            // }
+
+            // else{
+            //     this.navigateTo('/zone_crud/create-zone');
+            //     this.alertmsg = true;
+            //     this.zoneForm.reset({});
+            // }
+          }
+      })
   }
 }
