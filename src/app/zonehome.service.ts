@@ -24,12 +24,12 @@ export class ZonehomeService {
   }
 
   assignEmp(
-    emp_id: any,
+    empid: any,
     time: any,
     ):Observable<any>{
       var formData: any = new FormData();
-      formData.append("zone_id",emp_id);
-      formData.append("zone_name",time);
+      formData.append("empid",empid);
+      formData.append("time",time);
       const url = environment.API_EndPoint + 'assignEmp.php';
       return this.httpClient.post(url, formData,{
         reportProgress: true,
