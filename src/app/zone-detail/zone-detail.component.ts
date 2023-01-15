@@ -44,6 +44,7 @@ export class ZoneDetailComponent implements OnInit {
         icon: 'pi pi-exclamation-triangle',
         accept: () => {
           this.messageService.add({severity:'success', summary:'Confirmed', detail:'You have accepted'});
+          this.assignEmp();
         },
         reject: () => {
           this.messageService.add({severity:'success', summary:'Rejected', detail:'You have rejected'});
@@ -91,12 +92,12 @@ export class ZoneDetailComponent implements OnInit {
 
   assignEmp(){
 
-      console.log(this.AssignForm.value.zone_id);
-      console.log(this.AssignForm.value.site_name);
+      console.log(this.AssignForm.value.empid);
+      console.log(this.AssignForm.value.time);
     
       this.crudService.assignEmp(
-        this.AssignForm.value.zone_id,
-        this.AssignForm.value.site_name   
+        this.AssignForm.value.empid,
+        this.AssignForm.value.time   
       ).subscribe((event: HttpEvent<any>): void =>{
         switch(event.type){
           case HttpEventType.UploadProgress:
