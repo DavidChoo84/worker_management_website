@@ -23,6 +23,7 @@ export class ZoneDetailComponent implements OnInit {
   date: string;
   result: string;
   AssignForm: FormGroup;
+  eventmsg : any;
   
 
   elementType = NgxQrcodeElementTypes.URL;
@@ -101,18 +102,13 @@ export class ZoneDetailComponent implements OnInit {
       ).subscribe((event: HttpEvent<any>): void =>{
         switch(event.type){
           case HttpEventType.UploadProgress:
-            // if(event.total){
-            //   this.progress = Math.round((100 / event.total) * event.loaded);
-            //   this.msgs = `Uploaded! ${this.progress}%`;
-            // }
+           
             break;
           case HttpEventType.Response:
-            // event.body;
-            // this.eventmsg = event.body;
-            // this.alert = "{\"result\":\"success1\"}File has been uploaded"; 
-            // this.alertno = "{\"error\":\"Sorry. File is already exist\"}";
-            // console.log(this.eventmsg);
-            // console.log(this.alert);
+            event.body;
+            this.eventmsg = event.body;
+            
+            console.log(this.eventmsg);
             // if(this.eventmsg.search(this.alert) != -1){
             // // if(this.eventmsg===this.alert){
             //     this.alertmsg = false;
