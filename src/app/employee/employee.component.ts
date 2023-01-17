@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { DataSource } from '@angular/cdk/table';
+import { NavbarService } from '../navbar.service';
 /**
  * @title Data table with sorting, pagination, and filtering.
  */
@@ -16,11 +17,13 @@ export class EmployeeComponent implements OnInit {
    dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
    @ViewChild(MatPaginator) paginator: MatPaginator;
    @ViewChild(MatSort) sort: MatSort;
-
+   constructor(public nav: NavbarService){}
   
   ngOnInit() {
     setTimeout(() => this.dataSource.paginator = this.paginator);
     setTimeout(() => this.dataSource.sort = this.sort);
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace

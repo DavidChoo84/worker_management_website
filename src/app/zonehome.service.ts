@@ -23,4 +23,9 @@ export class ZonehomeService {
     return this.httpClient.get<Site>(url).pipe(map(data => data));
   }
 
+  loadAdmin(){
+    const url = environment.API_EndPoint + 'login.php';
+    return this.httpClient.get(url).pipe(map(data => data));
+  }
+
 }

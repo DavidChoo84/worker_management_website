@@ -5,6 +5,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 import { ZonehomeService } from '../zonehome.service';
 import { ActivatedRoute} from '@angular/router';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'app-zone-detail',
@@ -25,7 +26,7 @@ export class ZoneDetailComponent implements OnInit {
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   
   panelOpenState: boolean = false;
-  constructor(private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
+  constructor(private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig, public nav: NavbarService) {
     this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
@@ -49,7 +50,9 @@ export class ZoneDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
+    
     if(this.activatedRoute.snapshot.params['zone_id']){
       if(this.activatedRoute.snapshot.params['site_name']){
         let zone_id =this.activatedRoute.snapshot.params['zone_id'];

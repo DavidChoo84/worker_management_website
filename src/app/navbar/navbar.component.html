@@ -1,5 +1,5 @@
 <!--Navigation Bar-->
-<nav class="navbar navbar-light bg-light fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top" *ngIf="nav.visible">
     <div class="container">
         <div class="col-auto col-md-1 col-xl-1">
             <a class="menu text-end" data-bs-toggle="offcanvas" href="#offcanvasWithBackdrop" role="button" aria-controls="offcanvasExample"><i class="menu bi bi-list bi-5x"></i></a>
@@ -9,8 +9,8 @@
         </div>
       <div class="col-auto  col-md-8 col-xl-8 text-end">
         <a class="navbar-name" href="#">
-          <span class="name">
-            Lau Yong Jie (#1234)
+          <span class="name" *ngFor="let admins of admin ">
+            {{admins.adm_name}} / {{admins.adm_id}} / {{admins.ad}}
           </span>
         </a>
         <a class="navbar-brand" href="#">
@@ -21,16 +21,16 @@
 </nav>
 
 <!--Side Menu Bar-->
-<div class="offcanvas offcanvas-start" data-bs-backdrop="false" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+<div class="offcanvas offcanvas-start" data-bs-backdrop="false" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel" *ngIf="nav.visible">
     <div class="offcanvas-header align-items-center">
       <h5 class="offcanvas-title d-flex align-items-center" id="offcanvasWithBackdropLabel">Menu</h5>
       <a class="offcanvas-button text-reset" data-bs-dismiss="offcanvas" role="button" aria-label="Close"><i class="close bi bi-x-circle-fill"></i></a>
     </div>
     <hr>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body" *ngFor="let admins of admin">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             <li class="nav-item">
-                <a routerLink="/zone" class="main nav-link p-0">
+                <a routerLink="/zone" class="main nav-link p-0" *ngIf="this.admins.adm_level == 'Manager'">
                     <i class="bi bi-house-fill"></i> <span class="ms-1">Home</span>
                 </a>
             </li>
