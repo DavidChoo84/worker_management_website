@@ -23,9 +23,24 @@ export class ZonehomeService {
     return this.httpClient.get<Site>(url).pipe(map(data => data));
   }
 
-  loadAdmin(){
-    const url = environment.API_EndPoint + 'login.php';
-    return this.httpClient.get(url).pipe(map(data => data));
+  assignEmp(
+    empid: any,
+    time: any,
+    ):Observable<any>{
+      var formData: any = new FormData();
+      formData.append("empid",empid);
+      formData.append("time",time);
+      const url = environment.API_EndPoint + 'assignEmp.php';
+      return this.httpClient.post(url, formData,{
+        reportProgress: true,
+        observe: 'events',
+        responseType: 'text'
+      }).pipe(
+        catchError((err: any) => {
+          alert(err.message);
+          return throwError(() => err.message);
+        })
+      )
   }
 
 }
