@@ -95,10 +95,12 @@ export class ZoneDetailComponent implements OnInit {
 
       console.log(this.AssignForm.value.empid);
       console.log(this.AssignForm.value.time);
+      console.log(this.zoneID);
     
       this.crudService.assignEmp(
         this.AssignForm.value.empid,
-        this.AssignForm.value.time   
+        this.AssignForm.value.time ,
+        this.zoneID
       ).subscribe((event: HttpEvent<any>): void =>{
         switch(event.type){
           case HttpEventType.UploadProgress:
