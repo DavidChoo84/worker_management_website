@@ -63,7 +63,7 @@ import { NavbarService } from './navbar.service';
     ZoneDetailComponent,
     HomeComponent,
     ZoneComponent,
-    SiteComponent,
+    SiteComponent
   ],
   imports: [
     FormsModule,

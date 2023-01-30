@@ -14,13 +14,13 @@ export class NavbarComponent implements OnInit {
   constructor(public nav: NavbarService, private crudService: ZonehomeService ) { }
 
   ngOnInit(): void {
-    this.getAdmin();
+    //this.getAdmin();
   }
-  getAdmin(){
-    this.adminList = this.crudService.loadAdmin().subscribe(res=>{
-      this.admin = res;
-      console.log(this.admin)
-      // this.rowData = res;
-    })
-  };
+  // getAdmin(){
+  //   this.adminList = this.crudService.loadAdmin().subscribe(res=>{
+  //     this.admin = res;
+  //     console.log(this.admin)
+  //     // this.rowData = res;
+  //   })
+  // };
 }

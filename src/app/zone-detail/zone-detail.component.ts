@@ -7,6 +7,7 @@ import { ZonehomeService } from '../zonehome.service';
 import { ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'app-zone-detail',
@@ -30,7 +31,7 @@ export class ZoneDetailComponent implements OnInit {
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   
   panelOpenState: boolean = false;
-  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
+  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig, public nav: NavbarService) {
     this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
@@ -54,6 +55,8 @@ export class ZoneDetailComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
     this.primengConfig.ripple = true;
     this.createAssignForm();
 
