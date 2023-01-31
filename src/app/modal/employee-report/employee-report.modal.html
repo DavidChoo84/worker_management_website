@@ -1,0 +1,156 @@
+<div class="btn-clear" role="button" (click)="close()" ngbAutofocus>
+<i class="icon ico-close">X</i>
+</div>
+<div class="container">
+    <div class="card-title pb-1 pt-2 px-2">
+        <h3>Preview</h3>
+    </div>
+    <div class="card-content">
+        <div class="card-body report resize-y">
+                <div class="row d-flex align-items-center justify-content-center">
+                  <div class="col-auto py-1" id="paySlipData">
+                    <div class="text-center mt-2 mb-5">
+                        <h6 class="fw-bold">Payslip</h6>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">Buleko</span></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">Gender: </span> <small class="ms-3">{{empData.gender}}</small> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">END -{{currentMonth}}'{{currentYear}}</span></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">Name: </span> <small class="ms-3">{{empData.name}}</small> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">Employ No: </span> <small class="ms-3">{{empData.id}}</small> </div>
+                                </div>
+                                <!-- <div class="col-md-2">
+                                    <div> <span class="fw-bolder">DEPT: </span></div>
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">Passport No:</span> <small class="ms-3">{{empData.passportNo}}</small> </div>
+                                </div>
+                                <!-- <div class="col-md-3">
+                                    <div> <span class="fw-bolder">EPF #:</span> <small class="ms-3">{{empData[0].id}}</small> </div>
+                                </div> -->
+                                <div class="col-md-4">
+                                    <div> <span class="fw-bolder">SOCSO #  :</span> <small class="ms-3">{{empData.socsoId}}</small> </div>
+                                </div>
+                                <!-- <div class="col-md-2">
+                                    <div> <span class="fw-bolder">TAX # :</span> <small class="ms-3"></small> </div>
+                                </div> -->
+                            </div>
+                            
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Earnings</th>
+                                <th></th>            
+                                <th>Deductions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Basic Pay</td>
+                                <td>{{empData.basicPay}}</td>
+                                <td>Employee SOCSO</td>
+                                <td>{{empData.empSocso}}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Employee EIS</td>
+                                <td>{{empData.empEis}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <td>OT - 17 HRS</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr> -->
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <!-- <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Advance</td>
+                                <td></td>
+                            </tr> -->
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Total Earnings: </td>
+                                <td>{{empData.totalEarnings}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Nett Wages</td>
+                                <td>RM {{empData.nett}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="col-md-10 mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">E ' R EPF : </span> <small class="ms-3">400</small> </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">E ' R SOC :     /  EIS = </span> <small class="ms-3">10.00</small> </div>
+                        </div>
+            
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">E ' R EPF NO : </span> <small class="ms-3">39001</small> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div> <span class="fw-bolder">BANK : MAYBANK</span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">E ' R SOC NO :</span> <small class="ms-3">980077</small> </div>
+                        </div>
+                    </div>
+                </div> -->
+                  </div>
+                </div>
+            
+
+            
+        </div>
+    </div>
+</div>
+<div class="container my-2">
+    <div class="row d-flex align-items-center justify-content-center">
+        <button class="btn btn-primary align-items-center" style="width: 200px; height: 50px;" (click)="openPDF()">Download</button>
+    </div>
+    
+</div>
+
