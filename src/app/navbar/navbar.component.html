@@ -1,5 +1,5 @@
 <!--Navigation Bar-->
-<nav class="navbar navbar-light bg-light fixed-top" *ngIf="nav.visible">
+<nav class="navbar navbar-light bg-light fixed-top">
     <div class="container">
         <div class="col-auto col-md-1 col-xl-1">
             <a class="menu text-end" data-bs-toggle="offcanvas" href="#offcanvasWithBackdrop" role="button" aria-controls="offcanvasExample"><i class="menu bi bi-list bi-5x"></i></a>
@@ -9,8 +9,8 @@
         </div>
       <div class="col-auto  col-md-8 col-xl-8 text-end">
         <a class="navbar-name" href="#">
-          <span class="name" *ngFor="let admins of admin ">
-            {{admins.adm_name}} / {{admins.adm_id}} / {{admins.ad}}
+          <span class="name">
+            Lau Yong Jie (#1234)
           </span>
         </a>
         <a class="navbar-brand" href="#">
@@ -21,16 +21,16 @@
 </nav>
 
 <!--Side Menu Bar-->
-<div class="offcanvas offcanvas-start" data-bs-backdrop="false" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel" *ngIf="nav.visible">
+<div class="offcanvas offcanvas-start" data-bs-backdrop="false" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
     <div class="offcanvas-header align-items-center">
       <h5 class="offcanvas-title d-flex align-items-center" id="offcanvasWithBackdropLabel">Menu</h5>
       <a class="offcanvas-button text-reset" data-bs-dismiss="offcanvas" role="button" aria-label="Close"><i class="close bi bi-x-circle-fill"></i></a>
     </div>
     <hr>
-    <div class="offcanvas-body" *ngFor="let admins of admin">
+    <div class="offcanvas-body">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             <li class="nav-item">
-                <a routerLink="/zone" class="main nav-link p-0" *ngIf="this.admins.adm_level == 'Manager'">
+                <a routerLink="/zone" class="main nav-link p-0">
                     <i class="bi bi-house-fill"></i> <span class="ms-1">Home</span>
                 </a>
             </li>
@@ -40,30 +40,13 @@
                 </a>
                 <ul>
                     <li>
-                        <a routerLink="/add-employee" class="sub nav-link p-0">
+                        <a class="sub nav-link p-0">
                             <i class="bi bi-person-plus-fill"></i><span class="ms-1">Add Employee</span>
                         </a> 
                     </li>
                     <li>
-                        <a routerLink="/employee" class="sub nav-link p-0">
+                        <a href="#" class="sub nav-link p-0">
                             <i class="bi bi-people-fill"></i> <span class="ms-1">All Employee</span>
-                        </a> 
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a  routerLink="/site" class="main nav-link p-0">
-                    <i class="bi bi-person-workspace"></i> <span class="ms-1">Site</span>
-                </a>
-                <ul>
-                    <li>
-                        <a routerLink="/zone" class="sub nav-link p-0">
-                            <i class="bi bi-stickies-fill"></i> <span class="ms-1">Site Summary</span>
-                        </a> 
-                    </li>
-                    <li>
-                        <a routerLink="/zone_crud/create-zone" class="sub nav-link p-0">
-                            <i class="bi bi-building-fill-add"></i><span class="ms-1">Add Site</span>
                         </a> 
                     </li>
                 </ul>
@@ -75,15 +58,13 @@
                 <ul>
                     <li>
                         <a routerLink="/zone" class="sub nav-link p-0">
-                            <i class="bi bi-stickies-fill"></i> <span class="ms-1">Zone Summary</span>
+                            <i class="bi bi-stickies-fill"></i> <span class="ms-1">Overall Summary</span>
                         </a> 
                     </li>
                     <li>
-                        <div *ngIf= "this.adminType">
-                            <a  routerLink="/zone" class="main nav-link p-0">
-                                <i class="bi bi-person-workspace"></i> <span class="ms-1">Add Zone</span>
-                            </a>
-                        </div> 
+                        <a routerLink="/zone_crud/create-zone" class="sub nav-link p-0">
+                            <i class="bi bi-building-fill-add"></i><span class="ms-1">Add Zone</span>
+                        </a> 
                     </li>
                 </ul>
             </li>
