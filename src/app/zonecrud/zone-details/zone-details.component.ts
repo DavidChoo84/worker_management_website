@@ -4,6 +4,7 @@ import { ZonecrudService } from '../zonecrud.service';
 import { FormControl, FormGroup} from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
+import { NavbarService } from '../../navbar.service';
 
 @Component({
   selector: 'app-zone-details',
@@ -18,7 +19,8 @@ export class ZoneDetailsComponent implements OnInit {
   url:any;
 
   constructor(private crudService: ZonecrudService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              public nav: NavbarService) {
                 this.initializeForm();
                }
   
@@ -31,6 +33,9 @@ export class ZoneDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
+
     if(this.activatedRoute.snapshot.params['zoneID']){
       let zoneID =this.activatedRoute.snapshot.params['zoneID'];
       if(zoneID !== ''){
