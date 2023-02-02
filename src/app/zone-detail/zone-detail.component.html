@@ -1,147 +1,141 @@
-<div class="container">
+<div class="content">   
+    <a class="hyperlink" routerLink="/zone">Overall Summary </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Summary</a></span>
+    <h3>{{sitename}}</h3><h4>({{zoneID}})</h4>
+    <hr>
     <div class="row">
-        <div class="content">   
-            <a class="hyperlink" routerLink="/zone">Overall Summary </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Summary</a></span>
-            <h3>{{sitename}}</h3><h4>({{zoneID}})</h4>
-            <hr>
-            <div class="row">
-                <div class="col-12 pb-3">
-                    <div class="card shadow p-0 bg-body rounded">
-                        <div class="card-header">
-                            <div class="row align-items-center mb-0">
-                                <div class="col-6">
-                                    <p class="name d-flex align-items-center">Summary</p>
-                                </div>
-                                <div class="col-6">
-                                    <p class="date text-end">{{this.result}}</p>
-                                </div>
-                            </div>
+        <div class="col-12 pb-3">
+            <div class="card shadow p-0 bg-body rounded">
+                <div class="card-header">
+                    <div class="row align-items-center mb-0">
+                        <div class="col-6">
+                            <p class="name d-flex align-items-center">Summary</p>
                         </div>
-                        <div class="card-body">
-                            <div class="row align-items-center mb-3">
-                                <div class="col-8">
-                                    <p class="check-in d-flex align-items-center">Checked-In Today</p>
-                                </div>
-                                <div class="col-4">
-                                    <p class="check-in-amt text-end">{{clockrecord}}/{{assignrecord}}</p>
-                                </div>
-                                <div class="col-8">
-                                    <p class="total d-flex align-items-center">Total Employees</p>
-                                </div>
-                                <div class="col-4">
-                                    <p class="total-amt text-end">{{assignrecord}}</p>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <a routerLink="/zone_detail" class="btn btn-success" (click)="showBasicDialog()">Generate QR Code</a>
-                                <p-dialog header="{{sitename}} QR Code" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
-                                    <ngx-qrcode [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="this.zoneID" cssClass="bshadow"></ngx-qrcode>
-                                    <ng-template pTemplate="footer">
-                                        <p-button icon="pi pi-check" (click)="displayBasic=false" label="Yes" styleClass="p-button-text"></p-button>
-                                        <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
-                                    </ng-template>
-                                </p-dialog>
-                            </div>
+                        <div class="col-6">
+                            <p class="date text-end">{{this.result}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 pb-3">
-                    <div class="card shadow p-0 bg-body rounded">
-                        <!-- <div class="card-header">
-                            <div class="row align-items-center mb-0">
-                                <div class="col-6">
-                                    <p class="name d-flex align-items-center">Set Time Shift</p>
-                                </div>
+                <div class="card-body">
+                    <div class="row align-items-center mb-3">
+                        <div class="col-8">
+                            <p class="check-in d-flex align-items-center">Checked-In Today</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="check-in-amt text-end">{{clockrecord}}/{{assignrecord}}</p>
+                        </div>
+                        <div class="col-8">
+                            <p class="total d-flex align-items-center">Total Employees</p>
+                        </div>
+                        <div class="col-4">
+                            <p class="total-amt text-end">{{assignrecord}}</p>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a routerLink="/zone_detail" class="btn btn-success" (click)="showBasicDialog()">Generate QR Code</a>
+                        <p-dialog header="{{sitename}} QR Code" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                            <ngx-qrcode [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="this.zoneID" cssClass="bshadow"></ngx-qrcode>
+                            <ng-template pTemplate="footer">
+                                <p-button icon="pi pi-check" (click)="displayBasic=false" label="Yes" styleClass="p-button-text"></p-button>
+                                <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
+                            </ng-template>
+                        </p-dialog>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 pb-3">
+            <div class="card shadow p-0 bg-body rounded">
+                <!-- <div class="card-header">
+                    <div class="row align-items-center mb-0">
+                        <div class="col-6">
+                            <p class="name d-flex align-items-center">Set Time Shift</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center mb-3">
+                        <div class="check-in col-5">
+                            <label class="check-in-title pb-1">Check-In</label>
+                            <input type="time" class="form-control" >
+                        </div>
+                        <div class="to col-2 text-center">
+                            <p class="to">TO</p>
+                        </div>
+                        <div class="check-out col-5">
+                            <label class="check-in-title pb-1">Check-Out</label>
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a routerLink="/zone_summary" class="btn btn-primary">Change</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="col-12 pb-3">
+            <div class="card shadow p-0 bg-body rounded">
+                <div class="card-header">
+                    <p class="name d-flex align-items-center">Assign Employee</p>
+                    <ul class="nav nav-tabs card-header-tabs" id="myTab">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active" data-bs-toggle="tab">Individual</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#profile" class="nav-link" data-bs-toggle="tab">Batch</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="home">
+                            <div class="row mb-3">
+                                <form [formGroup]="AssignForm" (ngSubmit)="assignEmp()" enctype="multipart/form-data">
+
+                                    <div class="check-in col-6">
+                                        <label class="check-in-title pb-1">Employee ID</label>
+                                        <span><input formControlName="empid" type="text " class="form-control" placeholder="#1234" ></span>
+                                    
+                                    <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['empid'].errors && AssignForm.controls['empid'].touched">
+                                        <span *ngIf="AssignForm.controls['empid'].errors?.['required']">Employee ID is required.</span>
+                                        <span *ngIf="AssignForm.controls['empid'].errors?.['minlength']">Employee ID must contains at least 5 characters.</span>
+                                    </div>
+                                    </div>
+
+                                    <div class="check-in col-6">
+                                        <label class="check-in-title pb-1">Check-In</label>
+                                        <input formControlName="time" type="time" class="form-control" >
+                                    
+                                    <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['time'].errors && AssignForm.controls['time'].touched">
+                                        <span *ngIf="AssignForm.controls['time'].errors?.['required']">Time is required.</span>
+                                    </div>    
+                                    </div>
+                                    <div class="button text-center pb-3">
+                                        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+                                        <p-button (click)="confirm1()" icon="pi pi-trash" label="Confirm" styleClass="p-button-danger mr-2"></p-button>       
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="tab-pane fade" id="profile">
                             <div class="row align-items-center mb-3">
-                                <div class="check-in col-5">
-                                    <label class="check-in-title pb-1">Check-In</label>
-                                    <input type="time" class="form-control" >
-                                </div>
-                                <div class="to col-2 text-center">
-                                    <p class="to">TO</p>
-                                </div>
-                                <div class="check-out col-5">
-                                    <label class="check-in-title pb-1">Check-Out</label>
-                                    <input type="time" class="form-control">
-                                </div>
+                                <form>
+                                    <select multiple formControlName="name">
+                                      <option disabled>Select Oppo Suits</option>
+                                      <option>Choose oppo suit</option>
+                                      <!-- <option *ngFor="let suit of oppoSuits">{{suit}}</option> -->
+                                    </select>
+                                    <button>Submit</button>
+                                  </form>
                             </div>
-                            <div class="text-center">
-                                <a routerLink="/zone_summary" class="btn btn-primary">Change</a>
-                            </div>
+                        </div>
+                        <!-- <div class="text-center">
+                            <a routerLink="/zone_summary" class="btn btn-primary">Add</a>
                         </div> -->
                     </div>
                 </div>
-        
-                <form [formGroup]="AssignForm" (ngSubmit)="assignEmp()" enctype="multipart/form-data">
-                <div class="col-12 pb-3">
-                    <div class="card shadow p-0 bg-body rounded">
-                        <div class="card-header">
-                            <p class="name d-flex align-items-center">Assign Employee</p>
-                            <ul class="nav nav-tabs card-header-tabs" id="myTab">
-                                <li class="nav-item">
-                                    <a href="#home" class="nav-link active" data-bs-toggle="tab">Individual</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#profile" class="nav-link" data-bs-toggle="tab">Batch</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="home">
-                                    <div class="row mb-3">
-        
-                                        <div class="check-in col-6">
-                                            <label class="check-in-title pb-1">Employee ID</label>
-                                            <span><input formControlName="empid" type="text " class="form-control" placeholder="#1234" ></span>
-                                        
-                                        <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['empid'].errors && AssignForm.controls['empid'].touched">
-                                            <span *ngIf="AssignForm.controls['empid'].errors?.['required']">Employee ID is required.</span>
-                                            <span *ngIf="AssignForm.controls['empid'].errors?.['minlength']">Employee ID must contains at least 5 characters.</span>
-                                        </div>
-                                        </div>
-        
-                                        <div class="check-in col-6">
-                                            <label class="check-in-title pb-1">Check-In</label>
-                                            <input formControlName="time" type="time" class="form-control" >
-                                        
-                                        <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['time'].errors && AssignForm.controls['time'].touched">
-                                            <span *ngIf="AssignForm.controls['time'].errors?.['required']">Time is required.</span>
-                                        </div>    
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile">
-                                    <div class="row align-items-center mb-3">
-                                        <div class="check-in col-6">
-                                            <label class="check-in-title pb-1">From</label>
-                                            <input type="text" class="form-control" placeholder="#1234">
-                                        </div>
-                                        <div class="check-out col-6">
-                                            <label class="check-in-title pb-1">Until</label>
-                                            <input type="text" class="form-control" placeholder="#1239">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="text-center">
-                                    <a routerLink="/zone_summary" class="btn btn-primary">Add</a>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="button text-center pb-3">
-                            <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
-                            <p-button (click)="confirm1()" icon="pi pi-trash" label="Confirm" styleClass="p-button-danger mr-2"></p-button>       
-                        </div>
-                    </div>
-                </div> 
-                </form>
             </div>
-        </div>
+        </div> 
     </div>
 </div>
-
 <p-toast></p-toast>
