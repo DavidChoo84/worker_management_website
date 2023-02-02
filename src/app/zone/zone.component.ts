@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ZonehomeService } from '../zonehome.service';
-
+import { NavbarService } from '../navbar.service';
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
@@ -14,8 +14,9 @@ export class ZoneComponent implements OnInit {
   sitename : any;
   checkinlist : any;
   checkinNo : any = [];
+  searchfilter !: string;
 
-  constructor(private crudService: ZonehomeService) {
+  constructor(private crudService: ZonehomeService, public nav: NavbarService) {
       this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
@@ -25,6 +26,8 @@ export class ZoneComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
     this.getSiteName();
   }
 
@@ -36,5 +39,11 @@ export class ZoneComponent implements OnInit {
     })
 
   };
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.sitename.filter = filterValue;
+  }
 
 }

@@ -1,0 +1,202 @@
+<div class="container">
+  <div class="row">
+    <div class="content">
+      <a class="hyperlink" routerLink="/zone">Employee List </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Add Employee</a></span>
+      <h3>{{this.TitleText}}</h3>
+      <hr>
+      <div class="bordered col-12 pb-3">
+        <form [formGroup]="employeeForm" (ngSubmit)="submitImage()" enctype="multipart/form-data">
+          <div class="row">
+
+            <!--Employee ID-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-id" class="form-label">Employee ID <span style="color: red;">*</span></label>
+              <input 
+                formControlName="emp_id" 
+                type="text" 
+                class="form-control" 
+                id="emp-id" 
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_id'].errors && employeeForm.controls['emp_id'].touched,
+                  'is-valid' : !employeeForm.controls['emp_id'].errors
+                  }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_id'].errors && employeeForm.controls['emp_id'].touched">
+                <span *ngIf="employeeForm.controls['emp_id'].errors?.['required']">Employee ID is required.</span>
+                <span *ngIf="employeeForm.controls['emp_id'].errors?.['minlength']">Employee ID must contains at least 4 characters.</span>
+              </div>
+            </div>
+
+            <!--Employee Name-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-name" class="form-label">Employee Name <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_name" 
+                type="text"
+                class="form-control"
+                id="emp-name"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_name'].errors && employeeForm.controls['emp_name'].touched,
+                  'is-valid' : !employeeForm.controls['emp_name'].errors
+                }">
+                <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_name'].errors && employeeForm.controls['emp_name'].touched">
+                  <span *ngIf="employeeForm.controls['emp_name'].errors?.['required']">Employee Name is required.</span>
+                </div>
+            </div>
+
+            <!--Employee Gender-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-gender" class="form-label">Gender <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_gender" 
+                type="text"
+                class="form-control"
+                id="emp-gender"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_gender'].errors && employeeForm.controls['emp_gender'].touched,
+                  'is-valid' : !employeeForm.controls['emp_gender'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_gender'].errors && employeeForm.controls['emp_gender'].touched">
+                <span *ngIf="employeeForm.controls['emp_gender'].errors?.['required']">Gender is required.</span>
+              </div>
+            </div>
+
+            <!--Employee Profile Picture-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label class="form-label">Employee Profile Picture <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_photo"
+                type="file"
+                class="form-control" 
+                accept="image/*"
+                (change)="selectFile($event)"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_photo'].errors && employeeForm.controls['emp_photo'].touched,
+                  'is-valid' : !employeeForm.controls['emp_photo'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_photo'].errors && employeeForm.controls['emp_photo'].touched">
+                <span *ngIf="employeeForm.controls['emp_photo'].errors?.['required']">Employee Profile Picture is required.</span>
+              </div>
+            </div>
+            <!-- <div>
+              <img [src]="preview" class="preview">
+            </div> -->
+
+            <div *ngIf="alertmsg" class="alert alert-danger" role="alert">
+              The file is already exist. Please change the filename.
+              <button type="button" (click)="closeAlert()" class="btn-close btn-close-white" data-dismiss="alert" aria-label="Close">
+              </button>
+            </div>
+            
+            <!--Employee Passport No-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-passport" class="form-label">Employee Passport No <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_passport" 
+                type="text"
+                class="form-control"
+                id="emp-passport"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_passport'].errors && employeeForm.controls['emp_passport'].touched,
+                  'is-valid' : !employeeForm.controls['emp_passport'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_passport'].errors && employeeForm.controls['emp_passport'].touched">
+                <span *ngIf="employeeForm.controls['emp_passport'].errors?.['required']">Employee Passport is required.</span>
+              </div>
+            </div>
+
+            <!--Employee Arrival Date-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-arrival-dt" class="form-label">Arrival Date <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_arrival_dt" 
+                type="date"
+                class="form-control"
+                id="emp-arrival-dt"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_arrival_dt'].errors && employeeForm.controls['emp_arrival_dt'].touched,
+                  'is-valid' : !employeeForm.controls['emp_arrival_dt'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_arrival_dt'].errors && employeeForm.controls['emp_arrival_dt'].touched">
+                <span *ngIf="employeeForm.controls['emp_arrival_dt'].errors?.['required']">Arrival Date is required.</span>
+              </div>
+            </div>
+
+            <!--Employee Contact No-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-contact-no" class="form-label">Employee Contact No <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_contact_no" 
+                type="text"
+                class="form-control"
+                id="emp-contact-no"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_contact_no'].errors && employeeForm.controls['emp_contact_no'].touched,
+                  'is-valid' : !employeeForm.controls['emp_contact_no'].errors
+                }">
+                <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_contact_no'].errors && employeeForm.controls['emp_contact_no'].touched">
+                  <span *ngIf="employeeForm.controls['emp_contact_no'].errors?.['required']">Employee Contact Number is required.</span>
+                </div>
+            </div>
+
+            <!--Employee Call No-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-call-no" class="form-label">Employee Call No <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_call_no" 
+                type="text"
+                class="form-control"
+                id="emp-call-no"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_call_no'].errors && employeeForm.controls['emp_call_no'].touched,
+                  'is-valid' : !employeeForm.controls['emp_call_no'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_call_no'].errors && employeeForm.controls['emp_call_no'].touched">
+                <span *ngIf="employeeForm.controls['emp_call_no'].errors?.['required']">Employee Call Number is required.</span>
+              </div>
+            </div>
+
+            <!--Employee Socso No-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="emp-socsoNo" class="form-label">Employee Socso No <span style="color: red;">*</span></label>
+              <input
+                formControlName="emp_socsoNo" 
+                type="text"
+                class="form-control"
+                id="emp-socsoNo"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['emp_socsoNo'].errors && employeeForm.controls['emp_call_no'].touched,
+                  'is-valid' : !employeeForm.controls['emp_socsoNo'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['emp_socsoNo'].errors && employeeForm.controls['emp_socsoNo'].touched">
+                <span *ngIf="employeeForm.controls['emp_socsoNo'].errors?.['required']">Employee Socso Number is required.</span>
+              </div>
+            </div>
+
+            <!--Supervisor ID-->
+            <div class="form col-12 col-lg-6 col-md-6 col-sm-12">
+              <label for="supervisor-id" class="form-label">Supervisor ID <span style="color: red;">*</span></label>
+              <input
+                formControlName="supervisor_id" 
+                type="text"
+                class="form-control"
+                id="supervisor-id"
+                [ngClass]="{
+                  'is-invalid': employeeForm.controls['supervisor_id'].errors && employeeForm.controls['supervisor_id'].touched,
+                  'is-valid' : !employeeForm.controls['supervisor_id'].errors
+                }">
+              <div class="alert alert-danger" role="alert" *ngIf="employeeForm.controls['supervisor_id'].errors && employeeForm.controls['supervisor_id'].touched">
+                <span *ngIf="employeeForm.controls['supervisor_id'].errors?.['required']">Supervisor ID is required.</span>
+              </div>
+            </div>  
+          </div>
+          <div class="text-center">
+            <button type="submit" id="create" class="btn" [disabled]="!employeeForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../add-employee']"><i class="bi bi-plus"></i>Add Employee</button>
+            <button type="submit" id="list" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../employee-list']">Employee List</button>
+          </div>
+        </form>
+        
+    </div>
+  </div>
+</div>
+  
+<p-toast></p-toast>
