@@ -12,6 +12,10 @@ import { Observable, throwError } from 'rxjs';
 export class EmployeecrudService {
 
   constructor(private httpClient: HttpClient) { }
+  loadEmployeeInfo(employeeID: any): Observable<Employee>{
+    const url = environment.API_EndPoint + 'view_one.php?id='+employeeID;
+    return this.httpClient.get<Employee>(url).pipe(map(data => data));
+  }
 
   createEmployee(
     emp_id: any,
