@@ -52,6 +52,8 @@ import { environment } from '../environments/environment';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { SiteComponent } from './site/site.component';
 
+import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import { SiteComponent } from './site/site.component';
     HomeComponent,
     ZoneComponent,
     SiteComponent,
+    EmployeeReportModal,
   ],
   imports: [
     FormsModule,
@@ -102,7 +105,8 @@ ReactiveFormsModule,
     MatFormFieldModule,
     MatPaginatorModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideMessaging(() => getMessaging())
+    provideMessaging(() => getMessaging()),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
