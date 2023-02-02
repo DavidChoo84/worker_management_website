@@ -1,54 +1,65 @@
-<div class="content">
-    <div class="row align-items-center">
-        <div class="col-12">
-            <a class="hyperlink" routerLink="/zone">Overall Summary</a>
-        </div>
-        <div class="col-6">
-            <h3>Overall Summary</h3>
-        </div>
-        <div class="col-6">
-            <p class="text-end" routerLink="/zone_crud/create-zone"><span>+ Add Zone</span></p>
-        </div>
-    </div>
-    <hr>
+<div class="container">
     <div class="row">
-        <div class="col-auto col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-3" *ngFor="let data of checkinNo">
-            <div class="card shadow p-0 bg-body rounded">
-                <div class="card-header">
-                    <div class="row align-items-center mb-0">
-                        <div class="col-6">
-                            <p class="site_name d-flex align-items-center">{{data.site_name}}</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="date text-end">{{this.result}}</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="zone_id d-flex align-items-center">{{data.zone_id}}</p>
-                        </div>
-                        
-                        
-                    </div>
+        <div class="content">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <a class="hyperlink" routerLink="/zone">Overall Summary</a>
                 </div>
-                <div class="card-body">
-                    <div class="row align-items-center mb-3">
-                        <div class="col-8">
-                            <p class="check-in d-flex align-items-center">Checked-In Today</p>
+                <div class="col-6">
+                    <h3>Overall Summary</h3>
+                </div>
+                <div class="col-6">
+                    <p class="text-end" routerLink="/zone_crud/create-zone"><span>+ Add Zone</span></p>
+                </div>
+            </div>
+            <hr>
+            <span class="search">Search: </span>
+            <input class="text " [(ngModel)]="searchfilter">
+            <div class="row">
+                <div class="col-auto col-xl-4 col-lg-6 col-md-6 col-sm-12 pb-3" *ngFor="let data of checkinNo | filter: searchfilter">
+                    <div class="card shadow p-0 bg-body rounded">
+                        <div class="card-header">
+                            <div class="row align-items-center mb-0">
+                                <div class="col-6">
+                                    <p class="site_name d-flex align-items-center">{{data.site_name}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="date text-end">{{this.result}}</p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="zone_id d-flex align-items-center">{{data.zone_id}}</p>
+                                </div>
+                                
+                                
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <p class="check-in-amt text-end">{{data.ClockRecord}}/{{data.AssignRecords}}</p>
-                        </div>
-                        <div class="col-8">
-                            <p class="total d-flex align-items-center">Total Employees</p>
-                        </div>
-                        <div class="col-4">
-                            <p class="total-amt text-end">{{data.AssignRecords}}</p>
+                        <div class="card-body">
+                            <div class="row align-items-center mb-3">
+                                <div class="col-8">
+                                    <p class="check-in d-flex align-items-center">Checked-In Today</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="check-in-amt text-end">{{data.ClockRecord}}/{{data.AssignRecords}}</p>
+                                </div>
+                                <div class="col-8">
+                                    <p class="total d-flex align-items-center">Total Employees</p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="total-amt text-end">{{data.AssignRecords}}</p>
+                                </div>
+                            </div>
+                            <a [routerLink]="['/zone_detail',data.site_name, data.zone_id]" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
-                    <a [routerLink]="['/zone_detail',data.site_name, data.zone_id]" class="btn btn-primary">View Details</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
 
 

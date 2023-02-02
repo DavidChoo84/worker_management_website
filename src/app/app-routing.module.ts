@@ -10,13 +10,14 @@ import { SiteComponent } from './site/site.component';
 
 import { ZoneComponent } from './zone/zone.component';
 const routes: Routes = [
-  {path: '',redirectTo:'zone',pathMatch:'full'},
+  {path: '',redirectTo:'login',pathMatch:'full'},
   {path: 'login', component:LoginComponent},
   {path: 'zone_detail/:site_name/:zone_id', component:ZoneDetailComponent},
   {path: 'zone', component:ZoneComponent},
   {path: 'employee', component:EmployeeComponent},
   {path: 'site', component:SiteComponent},
-  {path: 'zone_crud', loadChildren: ()=>import('./zonecrud/crud.module').then(m=>m.CRUDModule)}
+  {path: 'zone_crud', loadChildren: ()=>import('./zonecrud/crud.module').then(m=>m.CRUDModule)},
+  {path: 'employee_crud', loadChildren: () =>import('./employeecrud/employeecrud.module').then(m=>m.EmployeeCRUDModule)}
 ];
 
 @NgModule({
