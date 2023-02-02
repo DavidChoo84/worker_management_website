@@ -51,8 +51,9 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { SiteComponent } from './site/site.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { NavbarService } from './navbar.service';
+
+import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -63,12 +64,13 @@ import { NavbarService } from './navbar.service';
     ZoneDetailComponent,
     HomeComponent,
     ZoneComponent,
-    SiteComponent
+    SiteComponent,
+    EmployeeReportModal,
   ],
   imports: [
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+HttpClientModule,
+ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -102,11 +104,11 @@ import { NavbarService } from './navbar.service';
     MatSortModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    Ng2SearchPipeModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideMessaging(() => getMessaging())
+    provideMessaging(() => getMessaging()),
+    NgbModule
   ],
-  providers: [NavbarService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
