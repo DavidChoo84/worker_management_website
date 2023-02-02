@@ -13,7 +13,7 @@ export class EmployeecrudService {
 
   constructor(private httpClient: HttpClient) { }
   loadEmployeeInfo(employeeID: any): Observable<Employee>{
-    const url = environment.API_EndPoint + 'view_one.php?id='+employeeID;
+    const url = environment.API_EndPoint + 'view_one_employee.php?id='+employeeID;
     return this.httpClient.get<Employee>(url).pipe(map(data => data));
   }
 
