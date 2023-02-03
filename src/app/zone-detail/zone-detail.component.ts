@@ -24,8 +24,9 @@ export class ZoneDetailComponent implements OnInit {
   result: string;
   AssignForm: FormGroup;
   eventmsg : any;
+  Emplist : any = [];
+  SelectedEmp : any = [];
   
-
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   
@@ -36,6 +37,7 @@ export class ZoneDetailComponent implements OnInit {
       const [month, day, year] = this.date.split('/');
 
       this.result = [day, month, year].join('/');
+
   }
 
   confirm1() {
@@ -81,6 +83,7 @@ confirm2() {
         }
       }
     }
+    this.loadEmpName();
   }
   displayBasic: boolean;
 
@@ -103,6 +106,13 @@ confirm2() {
       'empid': ['', Validators.compose([Validators.required, Validators.minLength(5)]) ],
       'time': ['', Validators.compose([Validators.required]) ],
     });
+
+  }
+
+  loadEmpName(){
+      this.crudService.loadEmp().subscribe(res=>{
+        this.Emplist = res;
+    })
 
   }
 
