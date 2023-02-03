@@ -123,132 +123,128 @@
     </div>
   </div>
   </div> -->
-<div class="container">
-  <div class="row">
-    <div class="content">   
-      <a class="hyperlink" routerLink="/zone">Overall Summary </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Create Zone</a></span>
-      <h3>{{this.TitleText}}</h3>
-      <hr>
-      <div class="bordered">
-        <div class="row">
-          <div class="col-12 pb-3">
-            <form [formGroup]="zoneForm" (ngSubmit)="submitImage()" enctype="multipart/form-data">
-                <div class="mb-3">
-                <label for="zone-id" class="form-label">Zone ID</label>
-                <input formControlName="zone_id" 
-                        type="text" 
-                        class="form-control" 
-                        id="zone-id"
-                        [ngClass]="{
-                        'is-invalid': zoneForm.controls['zone_id'].errors && zoneForm.controls['zone_id'].touched,
-                        'is-valid' : !zoneForm.controls['zone_id'].errors 
-                        }"
-                        
-                >
-                <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['zone_id'].errors && zoneForm.controls['zone_id'].touched">
-                    <span *ngIf="zoneForm.controls['zone_id'].errors?.['required']">Zone ID is required.</span>
-                    <span *ngIf="zoneForm.controls['zone_id'].errors?.['minlength']">Zone ID must contains at least 4 characters.</span>
-                </div>
-                </div>
-    
-                <div class="mb-3">
-                <label for="zone-name" class="form-label">Zone Name</label>
-                <input formControlName="zone_name" 
-                type="text" 
-                class="form-control" 
-                id="zone-name"
-                [ngClass]="{
-                    'is-invalid': zoneForm.controls['zone_name'].errors && zoneForm.controls['zone_name'].touched,
-                    'is-valid' : !zoneForm.controls['zone_name'].errors 
-                    }"
-                >
-    
-                <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['zone_name'].errors && zoneForm.controls['zone_name'].touched">
-                    <span *ngIf="zoneForm.controls['zone_name'].errors?.['required']">Zone Name is required.</span>
-                    <span *ngIf="zoneForm.controls['zone_name'].errors?.['minlength']">Zone Name must contains at least 5 characters.</span>
-                </div>
-                </div>
-    
-                <div class="mb-3">
-                  <label for="site-name" class="form-label">Site Name</label>
-                  <select class="form-select" formControlName="site_id" aria-label="Default select example"
-                  [ngClass]="{
-                    'is-invalid': zoneForm.controls['site_id'].errors && zoneForm.controls['site_id'].touched,
-                    'is-valid' : !zoneForm.controls['site_id'].errors 
-                    }"
-                  >
-                    <option selected>Select site name</option>
-                    <option *ngFor="let site of siteNameList" [ngValue]="site.site_id">
-                        {{site.site_name}}
-                    </option>
-                  </select>
-    
-                  <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['site_id'].errors && zoneForm.controls['site_id'].touched">
-                    <span *ngIf="zoneForm.controls['site_id'].errors?.['required']">Site Name is required.</span>
-                </div>
-                </div>
-    
-                <!-- upload image file -->
-                <div class="row">
-                  <div class="col-8 pt-3">
-                    <label class="btn btn-default p-0">
-                      <input type="file" class="form-control" formControlName="zone_qrcode"
-                      [ngClass]="{
-                        'is-invalid': zoneForm.controls['zone_qrcode'].errors && zoneForm.controls['zone_qrcode'].touched,
-                        'is-valid' : !zoneForm.controls['zone_qrcode'].errors 
-                        }"
-                        accept="image/*" (change)="selectFile($event)" />
-                    </label>
-    
-                    <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['zone_qrcode'].errors && zoneForm.controls['zone_qrcode'].touched">
-                      <span *ngIf="zoneForm.controls['zone_qrcode'].errors?.['required']">QR code file type format in png, jpg ,and jpeg required.</span>
-                  </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <img [src]="preview" class="preview">
-                </div>
-    
-                <div *ngIf="alertmsg" class="alert alert-danger" role="alert">
-                  The file is already exist. Please change the filename.
-                  <button type="button" (click)="closeAlert()" class="btn-close btn-close-white" data-dismiss="alert" aria-label="Close">
-                  </button>
-                </div>
-                
-                <!-- <div *ngIf="currentFile && progress" class="progress my-3">
-                  <div
-                    class="progress-bar progress-bar-info"
-                    role="progressbar"
-                    attr.aria-valuenow="{{ progress }}"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    [ngStyle]="{ width: progress + '%' }"
-                  >
-                    {{ progress }}%
-                  </div>
-                </div>
-    
-                <div class="progress form-group" *ngIf="progress > 0">
-                  <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        role = "progressbar"
-                        [style.width]="progress + '%'">
-                  </div>
-                </div> -->
-                <div class="text-center">
-                  <button type="submit" id="create" class="btn" [disabled]="!zoneForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../create-zone']"><i class="bi bi-plus"></i>{{buttonText}}</button>
-                  <button type="submit" id="list" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../zone-list']">Zone List</button>
-                </div>
-            </form>
-          </div>
-      </div>
-      </div>
-  </div>
-  </div>
-</div>
 
+  <div class="content">   
+    <a class="hyperlink" routerLink="/zone">Overall Summary </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Create Zone</a></span>
+    <h3>{{this.TitleText}}</h3>
+    <hr>
+    <div class="bordered">
+      <div class="row">
+        <div class="col-12 pb-3">
+          <form [formGroup]="zoneForm" (ngSubmit)="submitImage()" enctype="multipart/form-data">
+              <div class="mb-3">
+              <label for="zone-id" class="form-label">Zone ID</label>
+              <input formControlName="zone_id" 
+                      type="text" 
+                      class="form-control" 
+                      id="zone-id"
+                      [ngClass]="{
+                      'is-invalid': zoneForm.controls['zone_id'].errors && zoneForm.controls['zone_id'].touched,
+                      'is-valid' : !zoneForm.controls['zone_id'].errors 
+                      }"
+                      
+              >
+              <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['zone_id'].errors && zoneForm.controls['zone_id'].touched">
+                  <span *ngIf="zoneForm.controls['zone_id'].errors?.['required']">Zone ID is required.</span>
+                  <span *ngIf="zoneForm.controls['zone_id'].errors?.['minlength']">Zone ID must contains at least 4 characters.</span>
+              </div>
+              </div>
+  
+              <div class="mb-3">
+              <label for="zone-name" class="form-label">Zone Name</label>
+              <input formControlName="zone_name" 
+              type="text" 
+              class="form-control" 
+              id="zone-name"
+              [ngClass]="{
+                  'is-invalid': zoneForm.controls['zone_name'].errors && zoneForm.controls['zone_name'].touched,
+                  'is-valid' : !zoneForm.controls['zone_name'].errors 
+                  }"
+              >
+  
+              <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['zone_name'].errors && zoneForm.controls['zone_name'].touched">
+                  <span *ngIf="zoneForm.controls['zone_name'].errors?.['required']">Zone Name is required.</span>
+                  <span *ngIf="zoneForm.controls['zone_name'].errors?.['minlength']">Zone Name must contains at least 5 characters.</span>
+              </div>
+              </div>
+  
+              <div class="mb-3">
+                <label for="site-name" class="form-label">Site Name</label>
+                <select class="form-select" formControlName="site_id" aria-label="Default select example"
+                [ngClass]="{
+                  'is-invalid': zoneForm.controls['site_id'].errors && zoneForm.controls['site_id'].touched,
+                  'is-valid' : !zoneForm.controls['site_id'].errors 
+                  }"
+                >
+                  <option selected>Select site name</option>
+                  <option *ngFor="let site of siteNameList" [ngValue]="site.site_id">
+                      {{site.site_name}}
+                  </option>
+                </select>
+  
+                <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['site_id'].errors && zoneForm.controls['site_id'].touched">
+                  <span *ngIf="zoneForm.controls['site_id'].errors?.['required']">Site Name is required.</span>
+              </div>
+              </div>
+  
+              <!-- upload image file -->
+              <div class="row">
+                <div class="col-8 pt-3">
+                  <label class="btn btn-default p-0">
+                    <input type="file" class="form-control" formControlName="zone_qrcode"
+                    [ngClass]="{
+                      'is-invalid': zoneForm.controls['zone_qrcode'].errors && zoneForm.controls['zone_qrcode'].touched,
+                      'is-valid' : !zoneForm.controls['zone_qrcode'].errors 
+                      }"
+                      accept="image/*" (change)="selectFile($event)" />
+                  </label>
+  
+                  <div class="alert alert-danger" role="alert" *ngIf="zoneForm.controls['zone_qrcode'].errors && zoneForm.controls['zone_qrcode'].touched">
+                    <span *ngIf="zoneForm.controls['zone_qrcode'].errors?.['required']">QR code file type format in png, jpg ,and jpeg required.</span>
+                </div>
+                </div>
+              </div>
+              
+              <div>
+                <img [src]="preview" class="preview">
+              </div>
+  
+              <div *ngIf="alertmsg" class="alert alert-danger" role="alert">
+                The file is already exist. Please change the filename.
+                <button type="button" (click)="closeAlert()" class="btn-close btn-close-white" data-dismiss="alert" aria-label="Close">
+                </button>
+              </div>
+              
+              <!-- <div *ngIf="currentFile && progress" class="progress my-3">
+                <div
+                  class="progress-bar progress-bar-info"
+                  role="progressbar"
+                  attr.aria-valuenow="{{ progress }}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }"
+                >
+                  {{ progress }}%
+                </div>
+              </div>
+  
+              <div class="progress form-group" *ngIf="progress > 0">
+                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      role = "progressbar"
+                      [style.width]="progress + '%'">
+                </div>
+              </div> -->
+              <div class="text-center">
+                <button type="submit" id="create" class="btn" [disabled]="!zoneForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../create-zone']"><i class="bi bi-plus"></i>{{buttonText}}</button>
+                <button type="submit" id="list" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../zone-list']">Zone List</button>
+              </div>
+          </form>
+        </div>
+    </div>
+    </div>
+</div>
 <p-toast></p-toast>
 
    
