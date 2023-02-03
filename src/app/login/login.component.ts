@@ -26,9 +26,8 @@ this.dataService.userlogin(angForm1.value.username,angForm1.value.password)
 .pipe(first())
 .subscribe(
 data => {
-const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/zone';
-this.router.navigate([redirect]);
-console.log(redirect);
+    const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/zone';
+    this.router.navigate([redirect]);
 },
 error => {
     console.log(this.dataService.redirectUrl);
