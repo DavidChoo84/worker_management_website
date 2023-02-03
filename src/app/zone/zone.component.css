@@ -83,19 +83,3 @@ hr{
     padding-bottom: 15px!important  ;
     margin: 0!important;
 }
-
-span.search{
-    font-weight: 700;
-    font-size: 15px;
-    color: black;
-}
-
-.text{
-    border-bottom-color: black;
-    border-left: transparent;
-    border-top: transparent;
-    border-right: transparent;
-    width: 20%;
-    outline: none;
-    margin-bottom: 20px;
-}
