@@ -56,6 +56,8 @@ import { EmployeeReportModal } from './modal/employee-report/employee-report.mod
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeecrudComponent } from './employeecrud/employeecrud.component';
 import { EmployeeFormComponent } from './employeecrud/employee-form/employee-form.component';
+import { EmployeeDetailsComponent } from './employeecrud/employee-details/employee-details.component';
+import { EmployeeListComponent } from './employeecrud/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { EmployeeFormComponent } from './employeecrud/employee-form/employee-for
     EmployeeReportModal,
     EmployeecrudComponent,
     EmployeeFormComponent,
+    EmployeeDetailsComponent,
+    EmployeeListComponent,
   ],
   imports: [
     FormsModule,
