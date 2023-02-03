@@ -24,7 +24,7 @@ export class ZoneDetailComponent implements OnInit {
   result: string;
   AssignForm: FormGroup;
   eventmsg : any;
-  dropdownList : any = [];
+  
 
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
@@ -81,10 +81,6 @@ confirm2() {
         }
       }
     }
-
-    // dropdown list
-    this.dropdownList = ['item1','item2','item3'];
-    
   }
   displayBasic: boolean;
 

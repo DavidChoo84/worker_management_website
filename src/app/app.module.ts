@@ -54,7 +54,6 @@ import { SiteComponent } from './site/site.component';
 
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -107,8 +106,7 @@ ReactiveFormsModule,
     MatPaginatorModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideMessaging(() => getMessaging()),
-    NgbModule,
-    NgMultiSelectDropDownModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
