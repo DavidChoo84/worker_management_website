@@ -7,6 +7,7 @@ import { ZonehomeService } from '../zonehome.service';
 import { ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'app-zone-detail',
@@ -24,20 +25,18 @@ export class ZoneDetailComponent implements OnInit {
   result: string;
   AssignForm: FormGroup;
   eventmsg : any;
-  Emplist : any = [];
-  SelectedEmp : any = [];
   
+
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   
   panelOpenState: boolean = false;
-  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
+  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig, public nav: NavbarService) {
     this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
 
       this.result = [day, month, year].join('/');
-
   }
 
   confirm1() {
@@ -55,22 +54,9 @@ export class ZoneDetailComponent implements OnInit {
     });
 }
 
-confirm2() {
-  this.confirmationService.confirm({
-      message: 'Are you sure that you want to proceed?',
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        this.messageService.add({severity:'success', summary:'Confirmed', detail:'You have accepted'});
-        // this.assignMultiple();
-      },
-      reject: () => {
-        this.messageService.add({severity:'success', summary:'Rejected', detail:'You have rejected'});
-    }
-  });
-}
-
   ngOnInit(): void {
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
     this.primengConfig.ripple = true;
     this.createAssignForm();
 
@@ -83,7 +69,6 @@ confirm2() {
         }
       }
     }
-    this.loadEmpName();
   }
   displayBasic: boolean;
 
@@ -106,13 +91,6 @@ confirm2() {
       'empid': ['', Validators.compose([Validators.required, Validators.minLength(5)]) ],
       'time': ['', Validators.compose([Validators.required]) ],
     });
-
-  }
-
-  loadEmpName(){
-      this.crudService.loadEmp().subscribe(res=>{
-        this.Emplist = res;
-    })
 
   }
 

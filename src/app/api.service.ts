@@ -9,12 +9,11 @@ providedIn: 'root'
 
 export class ApiService {
 redirectUrl: string;
-baseUrl:string = "https://bulokeworks.com/php-local/webphp";
+baseUrl:string = "http://localhost/web_apinew";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 constructor(private httpClient : HttpClient) { }
 public userlogin(username: any, password: any) {
 alert(username)
-alert(password)
 return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
 .pipe(map(Users => {
 this.setToken(Users[0].name);

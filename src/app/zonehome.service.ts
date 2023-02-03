@@ -23,11 +23,6 @@ export class ZonehomeService {
     return this.httpClient.get<Site>(url).pipe(map(data => data));
   }
 
-  loadEmp(){
-    const url = environment.API_EndPoint + 'viewemp.php';
-    return this.httpClient.get(url).pipe(map(data => data));
-  }
-
   assignEmp(
     empid: any,
     time: any,
