@@ -122,12 +122,10 @@
                                 <form>
                                     <div class="check-in col-6">
                                         <label class="check-in-title pb-1">Employee ID</label>
-                                        <div class="check-in col-6">
-                                            <select multiple formControlName="name">
-                                                <option disabled>Select Oppo Suits</option>
-                                                <option>Choose oppo suit</option>
-                                                <!-- <option *ngFor="let suit of oppoSuits">{{suit}}</option> -->
-                                            </select>
+                                        <div class="check-in col-6" style="width:50%">
+                                                <ng-multiselect-dropdown
+                                                    [data]="dropdownList">
+                                                </ng-multiselect-dropdown>                            
                                         </div>
                                     
                                         <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['empid'].errors && AssignForm.controls['empid'].touched">
