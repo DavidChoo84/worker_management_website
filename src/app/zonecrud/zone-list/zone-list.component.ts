@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ZonecrudService } from '../zonecrud.service';
-import { NavbarService } from '../../navbar.service';
 
 @Component({
   selector: 'app-zone-list',
@@ -15,14 +14,12 @@ export class ZoneListComponent implements OnInit {
   zoneList: any = [];
   zoneListSubscribe: any;
   params?: any;
-  constructor(private crudService: ZonecrudService, public nav: NavbarService) { 
+  constructor(private crudService: ZonecrudService) { 
     
   }
   
   ngOnInit(): void {
     this.getZoneList();
-    this.nav.show();
-    this.nav.doSomethingElseUseful();
   }
 
   getZoneList(){

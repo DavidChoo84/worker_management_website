@@ -55,8 +55,6 @@ import { SiteComponent } from './site/site.component';
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,8 +69,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   ],
   imports: [
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+HttpClientModule,
+ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -108,8 +106,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatPaginatorModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideMessaging(() => getMessaging()),
-    NgbModule,
-    Ng2SearchPipeModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
