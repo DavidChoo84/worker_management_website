@@ -119,17 +119,14 @@
                         </div>
                         <div class="tab-pane fade" id="profile">
                             <div class="row align-items-center mb-3">
-                                <form>
+                                <form>  
                                     <div class="check-in col-6">
                                         <label class="check-in-title pb-1">Employee ID</label>
                                         <div class="check-in col-6">
-                                            <select multiple formControlName="name">
-                                                <option disabled>Select Oppo Suits</option>
-                                                <option>Choose oppo suit</option>
-                                                <!-- <option *ngFor="let suit of oppoSuits">{{suit}}</option> -->
-                                            </select>
+                                            <p-multiSelect [options]="Emplist" [(ngModel)]="SelectedEmp" defaultLabel="Select Employee" optionLabel="emp_id">
+                                                
+                                            </p-multiSelect>
                                         </div>
-                                    
                                         <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['empid'].errors && AssignForm.controls['empid'].touched">
                                             <span *ngIf="AssignForm.controls['empid'].errors?.['required']">Employee ID is required.</span>
                                             <span *ngIf="AssignForm.controls['empid'].errors?.['minlength']">Employee ID must contains at least 5 characters.</span>
@@ -149,7 +146,6 @@
                                         <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
                                         <p-button (click)="confirm2()" icon="pi pi-trash" label="Confirm" styleClass="p-button-danger mr-2"></p-button>       
                                     </div>
-
                                 </form>
                             </div>
                         </div>

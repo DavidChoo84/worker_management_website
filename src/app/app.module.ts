@@ -106,7 +106,7 @@ ReactiveFormsModule,
     MatPaginatorModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideMessaging(() => getMessaging()),
-    NgbModule
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
