@@ -165,7 +165,7 @@ confirm2() {
     console.log(this.AssignBatchForm.value.time);
     console.log(this.zoneID);
     
-    for (var i = 0; i < this.AssignBatchForm.value.empid.length; i++) {
+    for (var i = 0; i <= this.AssignBatchForm.value.empid.length; i++) {
       console.log(this.AssignBatchForm.value.empid[i].emp_id);
       this.crudService.assignBatch(
         this.AssignBatchForm.value.empid[i].emp_id,
