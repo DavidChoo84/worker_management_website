@@ -67,6 +67,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ZoneComponent,
     SiteComponent,
     EmployeeReportModal
+
   ],
   imports: [
     FormsModule,
