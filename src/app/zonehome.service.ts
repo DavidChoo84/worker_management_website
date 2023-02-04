@@ -50,4 +50,26 @@ export class ZonehomeService {
       )
   }
 
+  assignBatch(
+    empid: any,
+    time: any,
+    zoneID : any
+    ):Observable<any>{
+      var formData: any = new FormData();
+      formData.append("empid",empid);
+      formData.append("time",time);
+      formData.append("zoneid",zoneID);
+      const url = environment.API_EndPoint + 'assignBatch.php?zone_id=' + zoneID;
+      return this.httpClient.post(url, formData,{
+        reportProgress: true,
+        observe: 'events',
+        responseType: 'text'
+      }).pipe(
+        catchError((err: any) => {
+          alert(err.message);
+          return throwError(() => err.message);
+        })
+      )
+  }
+
 }
