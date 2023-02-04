@@ -54,6 +54,10 @@ import { SiteComponent } from './site/site.component';
 
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeecrudComponent } from './employeecrud/employeecrud.component';
+import { EmployeeFormComponent } from './employeecrud/employee-form/employee-form.component';
+import { EmployeeDetailsComponent } from './employeecrud/employee-details/employee-details.component';
+import { EmployeeListComponent } from './employeecrud/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ZoneComponent,
     SiteComponent,
     EmployeeReportModal,
+    EmployeecrudComponent,
+    EmployeeFormComponent,
+    EmployeeDetailsComponent,
+    EmployeeListComponent,
   ],
   imports: [
     FormsModule,
