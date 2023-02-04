@@ -119,17 +119,16 @@
                         </div>
                         <div class="tab-pane fade" id="profile">
                             <div class="row align-items-center mb-3">
-                                <form>  
+                                <form [formGroup]="AssignBatchForm" (ngSubmit)="assignBatch()" enctype="multipart/form-data">  
                                     <div class="check-in col-6">
                                         <label class="check-in-title pb-1">Employee ID</label>
-                                        <div class="check-in col-6">
-                                            <p-multiSelect [options]="Emplist" [(ngModel)]="SelectedEmp" defaultLabel="Select Employee" optionLabel="emp_id">
+                                        <div class="check-in col-12">
+                                            <p-multiSelect formControlName="empid" [options]="Emplist" [(ngModel)]="SelectedEmp" defaultLabel="Select Employee" optionLabel="emp_id" [style]="{'width':'100%'}" [panelStyle]="{'width':'400px'}">
                                                 
                                             </p-multiSelect>
                                         </div>
-                                        <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['empid'].errors && AssignForm.controls['empid'].touched">
-                                            <span *ngIf="AssignForm.controls['empid'].errors?.['required']">Employee ID is required.</span>
-                                            <span *ngIf="AssignForm.controls['empid'].errors?.['minlength']">Employee ID must contains at least 5 characters.</span>
+                                        <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignBatchForm.controls['empid'].errors && AssignBatchForm.controls['empid'].touched">
+                                            <span *ngIf="AssignBatchForm.controls['empid'].errors?.['required']">Employee ID is required.</span>
                                         </div>
                                     </div>
 
@@ -137,8 +136,8 @@
                                         <label class="check-in-title pb-1">Check-In</label>
                                         <input formControlName="time" type="time" class="form-control" >
                                     
-                                        <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignForm.controls['time'].errors && AssignForm.controls['time'].touched">
-                                            <span *ngIf="AssignForm.controls['time'].errors?.['required']">Time is required.</span>
+                                        <div class="alert alert-danger" id="alert" role="alert" *ngIf="AssignBatchForm.controls['time'].errors && AssignBatchForm.controls['time'].touched">
+                                            <span *ngIf="AssignBatchForm.controls['time'].errors?.['required']">Time is required.</span>
                                         </div>    
                                     </div>
 

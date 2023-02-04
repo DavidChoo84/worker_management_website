@@ -23,6 +23,7 @@ export class ZoneDetailComponent implements OnInit {
   date: string;
   result: string;
   AssignForm: FormGroup;
+  AssignBatchForm : FormGroup;
   eventmsg : any;
   Emplist : any = [];
   SelectedEmp : any = [];
@@ -48,6 +49,7 @@ export class ZoneDetailComponent implements OnInit {
         accept: () => {
           this.messageService.add({severity:'success', summary:'Confirmed', detail:'You have accepted'});
           this.assignEmp();
+          this.AssignForm.reset({});
         },
         reject: () => {
           this.messageService.add({severity:'success', summary:'Rejected', detail:'You have rejected'});
@@ -62,7 +64,8 @@ confirm2() {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.messageService.add({severity:'success', summary:'Confirmed', detail:'You have accepted'});
-        // this.assignMultiple();
+        this.assignBatch();
+        this.AssignBatchForm.reset({});
       },
       reject: () => {
         this.messageService.add({severity:'success', summary:'Rejected', detail:'You have rejected'});
@@ -104,6 +107,11 @@ confirm2() {
   createAssignForm(){
     this.AssignForm = this.formBuilder.group({
       'empid': ['', Validators.compose([Validators.required, Validators.minLength(5)]) ],
+      'time': ['', Validators.compose([Validators.required]) ],
+    });
+
+    this.AssignBatchForm = this.formBuilder.group({
+      'empid': ['', Validators.compose([Validators.required]) ],
       'time': ['', Validators.compose([Validators.required]) ],
     });
 
@@ -150,4 +158,31 @@ confirm2() {
           }
       })
   }
+
+  assignBatch(){
+
+    console.log(this.AssignBatchForm.value.empid);
+    console.log(this.AssignBatchForm.value.time);
+    console.log(this.zoneID);
+    
+    for (var i = 0; i < this.AssignBatchForm.value.empid.length; i++) {
+      console.log(this.AssignBatchForm.value.empid[i].emp_id);
+      this.crudService.assignBatch(
+        this.AssignBatchForm.value.empid[i].emp_id,
+        this.AssignBatchForm.value.time ,
+        this.zoneID
+      ).subscribe((event: HttpEvent<any>): void =>{
+        switch(event.type){
+          case HttpEventType.UploadProgress:
+           
+            break;
+          case HttpEventType.Response:
+            event.body;
+            this.eventmsg = event.body;
+            
+            console.log(this.eventmsg);
+          }
+      })
+    }
+}
 }
