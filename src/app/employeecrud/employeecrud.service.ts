@@ -2,7 +2,7 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {catchError, map} from "rxjs/operators";
-import { HttpResponse } from './models/http.response';
+import { HttpResponse } from './models/http-response';
 import { Employee} from './models/employee';
 import { Observable, throwError } from 'rxjs';
 
@@ -12,6 +12,7 @@ import { Observable, throwError } from 'rxjs';
 export class EmployeecrudService {
 
   constructor(private httpClient: HttpClient) { }
+
   loadEmployeeInfo(employeeID: any): Observable<Employee>{
     const url = environment.API_EndPoint + 'view_one_employee.php?id='+employeeID;
     return this.httpClient.get<Employee>(url).pipe(map(data => data));

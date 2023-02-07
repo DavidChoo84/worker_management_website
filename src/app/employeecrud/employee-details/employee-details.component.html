@@ -1,1 +1,63 @@
-<p>employee-details works!</p>
+<div class="container">
+   <div class="row">
+    <div class="content">
+        <a class="hyperlink" routerLink="/zone">Employee List </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Employee Details</a></span>
+        <h3>Employee Details</h3>
+        <hr>
+       <div class="bordered col-12 pb-3">
+        <div class="col-3">
+            <button type="submit" class="btn btn-primary">Back</button>
+        </div> 
+        <div class="col-12">
+           <div class="text-center p-5">
+            <img src="{{this.url}}" class="card-img-top">
+           </div>
+           <form [formGroup]="employeeForm1">
+            <div class="mb-3">
+                <label for="emp-id" class="form-label">Employee ID</label>
+                <input 
+                    formControlName="emp_id" 
+                    readonly 
+                    type="text" 
+                    class="form-control" 
+                    id="emp-id"
+                >
+            </div>
+            <div class="mb-3">
+                <label for="emp-name" class="form-label">Employee Name</label>
+                <input formControlName="emp_name" readonly type="text" class="form-control" id="emp-name">
+            </div>
+            <div class="mb-3">
+                <label for="emp-gender" class="form-label">Employee Gender</label>
+                <input formControlName="emp_gender" readonly type="text" class="form-control" id="emp-gender">
+            </div>
+            <div class="mb-3">
+                <label for="emp-passport" class="form-label">Employee Passport</label>
+                <input formControlName="emp_passport" readonly type="text" class="form-control" id="emp-passport">
+            </div>
+            <div class="mb-3">
+                <label for="emp-arrival-dt" class="form-label">Employee Arrival Date</label>
+                <input formControlName="emp_arrival_dt" readonly type="text" class="form-control" id="emp-arrival-dt">
+            </div>
+            <div class="mb-3">
+                <label for="emp-contact-no" class="form-label">Employee Contact No</label>
+                <input formControlName="emp_contact_no" readonly type="text" class="form-control" id="emp-contact-no">
+            </div>
+            <div class="mb-3">
+                <label for="emp-socsoNo" class="form-label">Employee Socso No</label>
+                <input formControlName="emp_socsoNo" readonly type="text" class="form-control" id="emp-socsoNo">
+            </div>
+            <div class="mb-3">
+                <label for="emp-call-no" class="form-label">Employee Call No</label>
+                <input formControlName="emp_call_no" readonly type="text" class="form-control" id="emp-call-no">
+            </div>
+            <div class="mb-3">
+                <label for="supervisor-id" lass="form-label">Supervisor ID</label>
+                <input formControlName="supervisor_id" readonly type="text" class="form-control" id="supervisor-id">
+            </div>
+           </form>
+        </div>
+       </div>
+    </div>
+   </div>
+</div>

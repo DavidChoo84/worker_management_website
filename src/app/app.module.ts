@@ -54,7 +54,7 @@ import { SiteComponent } from './site/site.component';
 
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NavbarService } from './navbar.service';
 
 @NgModule({
   declarations: [
@@ -108,7 +108,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     provideMessaging(() => getMessaging()),
     NgbModule,
   ],
-  providers: [],
+  providers: [NavbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
