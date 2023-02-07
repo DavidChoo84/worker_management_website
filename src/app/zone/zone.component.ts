@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from '../navbar.service';
 import { ZonehomeService } from '../zonehome.service';
-
 @Component({
   selector: 'app-zone',
   templateUrl: './zone.component.html',
@@ -15,7 +15,7 @@ export class ZoneComponent implements OnInit {
   checkinlist : any;
   checkinNo : any = [];
 
-  constructor(private crudService: ZonehomeService) {
+  constructor(private crudService: ZonehomeService, public nav: NavbarService) {
       this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
@@ -26,6 +26,8 @@ export class ZoneComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSiteName();
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
   }
 
   getSiteName(){

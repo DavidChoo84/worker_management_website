@@ -1,0 +1,34 @@
+.content{
+    padding-top: 65px;
+}
+
+hr{
+    padding-bottom: 15px!important  ;
+    margin: 0!important;
+}
+
+.hyperlink{
+    text-decoration: none;
+    font-size: 15px;
+    color: blue;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.bordered{
+    border-radius: 10px;
+    border-style: double;
+    padding : 30px;
+    border-color: #1481D3;
+}
+
+.card-img-top{
+    height: 300px;
+    width: 250px;
+}
