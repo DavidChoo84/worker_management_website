@@ -39,7 +39,7 @@
               <span>Search: </span>
               <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Filter">
               <hr>
-              <table mat-table [dataSource]="employeeList" matSort class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
                 <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
                   <td mat-cell *matCellDef="let element"> {{element.id}} </td>
