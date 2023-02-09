@@ -16,8 +16,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EmployeeComponent implements OnInit {
    displayedColumns: string[] = ['id', 'name', 'photo', 'create', 'edit', 'delete', 'action'];
-   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-   employeeList : any;
+   employeeList: Employee[] = [];
+   dataSource : any;
    show: boolean = false;
    @ViewChild(MatPaginator) paginator: MatPaginator;
    @ViewChild(MatSort) sort: MatSort;
@@ -51,10 +51,14 @@ export class EmployeeComponent implements OnInit {
  }
   
   ngOnInit() {
-    setTimeout(() => this.dataSource.paginator = this.paginator);
-    setTimeout(() => this.dataSource.sort = this.sort);
+    //setTimeout(() => this.dataSource.paginator = this.paginator);
+    //setTimeout(() => this.dataSource.sort = this.sort);
     this.employeeService.retrieveEmployeeDetails().subscribe(res => {
-      this.employeeList = res;
+      this.employeeList = Object.values(res);
+      this.dataSource = new MatTableDataSource<Employee>(this.employeeList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log(this.dataSource);
     })
   }
 
@@ -86,7 +90,7 @@ export class EmployeeComponent implements OnInit {
 
 }
 
-export interface PeriodicElement {
+export interface Employee {
   name: string;
   id: string;
   photo: string;
@@ -94,25 +98,3 @@ export interface PeriodicElement {
 }
 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 'Z001', name: 'Lau Yong Jie', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z002', name: 'Teng Wei Zhun', photo: 'https://apod.nasa.gov/apod/image/2212/MarsTrailsSMALL.jpg'},
-  { id: 'Z003', name: 'Looi Hao Shan', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z004', name: 'Choo Zhe Lim', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z005', name: 'Ng Wei Shen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z006', name: 'Kong Hao Kwang', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z007', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z008', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z009', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z010', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z011', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z012', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z013', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z014', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z015', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z016', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z017', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z018', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z019', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'},
-  { id: 'Z020', name: 'Hydrogen', photo: 'https://github.com/SiddAjmera.png'}
-];
