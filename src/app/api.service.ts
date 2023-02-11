@@ -8,37 +8,54 @@ providedIn: 'root'
 })
 
 export class ApiService {
-redirectUrl: string;
-baseUrl:string = "https://bulokeworks.com/php-local/webphp";
-@Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-constructor(private httpClient : HttpClient) { }
-public userlogin(username: any, password: any) {
-alert(username)
-alert(password)
-return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
-.pipe(map(Users => {
-this.setToken(Users[0].name);
-this.getLoggedInName.emit(true);
-return Users;
-}));
-}
+    redirectUrl: string;
+    baseUrl:string = "http://localhost/web_apinew";
+    @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+    
+    constructor(private httpClient : HttpClient) { }
+    public userlogin(username: any, password: any) {
+        alert(username)
+        alert(password)
+        return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
+            .pipe(map(Users => {
+                this.setToken(Users[0].name);
+                this.setUserData(Users[0]);
+                this.getLoggedInName.emit(true);
+                return Users;
+            }));
+        }
 
 
 //token
-setToken(token: string) {
-localStorage.setItem('token', token);
-}
-getToken() {
-return localStorage.getItem('token');
-}
-deleteToken() {
-localStorage.removeItem('token');
-}
-isLoggedIn() {
-const usertoken = this.getToken();
-if (usertoken != null) {
-return true
-}
-return false;
-}
+
+    setUserData(userData: any) {
+        localStorage.setItem('userdata', JSON.stringify(userData));
+    }
+
+    getUserData() {
+        const userData = localStorage.getItem('userdata');
+        return JSON.parse(userData ||'{}');
+        
+    }
+
+    setToken(token: any) {
+        localStorage.setItem('token', token);
+    }
+
+    getToken() {
+        return localStorage.getItem('token');
+        
+    }
+
+    deleteToken() {
+        localStorage.removeItem('token');
+    }
+
+    isLoggedIn() {
+        const usertoken = this.getToken();
+        if (usertoken != null) {
+            return true
+        }
+        return false;
+    }
 }
