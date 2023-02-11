@@ -7,6 +7,7 @@ import { ZonehomeService } from '../zonehome.service';
 import { ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-zone-detail',
@@ -27,12 +28,14 @@ export class ZoneDetailComponent implements OnInit {
   eventmsg : any;
   Emplist : any = [];
   SelectedEmp : any = [];
+  adminList: any = [];
+  adm_id:any;
   
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   
   panelOpenState: boolean = false;
-  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
+  constructor(public formBuilder: FormBuilder,private crudService: ZonehomeService,private api: ApiService,private activatedRoute: ActivatedRoute,private confirmationService: ConfirmationService, private messageService: MessageService, private primengConfig: PrimeNGConfig) {
     this.date = this.time.toLocaleDateString();
 
       const [month, day, year] = this.date.split('/');
@@ -87,6 +90,7 @@ confirm2() {
       }
     }
     this.loadEmpName();
+    this.getAdmin();
   }
   displayBasic: boolean;
 
@@ -129,11 +133,13 @@ confirm2() {
       console.log(this.AssignForm.value.empid);
       console.log(this.AssignForm.value.time);
       console.log(this.zoneID);
+      console.log(this.adm_id);
     
       this.crudService.assignEmp(
         this.AssignForm.value.empid,
         this.AssignForm.value.time ,
-        this.zoneID
+        this.zoneID,
+        this.adm_id
       ).subscribe((event: HttpEvent<any>): void =>{
         switch(event.type){
           case HttpEventType.UploadProgress:
@@ -164,13 +170,15 @@ confirm2() {
     console.log(this.AssignBatchForm.value.empid);
     console.log(this.AssignBatchForm.value.time);
     console.log(this.zoneID);
+    console.log(this.adm_id);
     
     for (var i = 0; i <= this.AssignBatchForm.value.empid.length; i++) {
       console.log(this.AssignBatchForm.value.empid[i].emp_id);
       this.crudService.assignBatch(
         this.AssignBatchForm.value.empid[i].emp_id,
         this.AssignBatchForm.value.time ,
-        this.zoneID
+        this.zoneID,
+        this.adm_id
       ).subscribe((event: HttpEvent<any>): void =>{
         switch(event.type){
           case HttpEventType.UploadProgress:
@@ -184,5 +192,10 @@ confirm2() {
           }
       })
     }
-}
+  }
+
+  getAdmin(){
+    this.adminList = [this.api.getUserData()];
+    this.adm_id = this.adminList[0].adm_id;
+  }
 }
