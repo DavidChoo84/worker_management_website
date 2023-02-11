@@ -31,12 +31,14 @@ export class ZonehomeService {
   assignEmp(
     empid: any,
     time: any,
-    zoneID : any
+    zoneID : any,
+    adm_id : any
     ):Observable<any>{
       var formData: any = new FormData();
       formData.append("empid",empid);
       formData.append("time",time);
       formData.append("zoneid",zoneID);
+      formData.append("admid",adm_id);
       const url = environment.API_EndPoint + 'assignEmp.php?zone_id=' + zoneID;
       return this.httpClient.post(url, formData,{
         reportProgress: true,
@@ -53,12 +55,14 @@ export class ZonehomeService {
   assignBatch(
     empid: any,
     time: any,
-    zoneID : any
+    zoneID : any,
+    adm_id : any
     ):Observable<any>{
       var formData: any = new FormData();
       formData.append("empid",empid);
       formData.append("time",time);
       formData.append("zoneid",zoneID);
+      formData.append("admid",adm_id);
       const url = environment.API_EndPoint + 'assignBatch.php?zone_id=' + zoneID;
       return this.httpClient.post(url, formData,{
         reportProgress: true,
