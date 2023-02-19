@@ -66,4 +66,13 @@ export class EmployeecrudService {
 
     return this.httpClient.request(req);
   }
+
+  retrieveEmployeeDetails(){
+    return this.httpClient.get(environment.API_EndPoint + 'employeeDetails.php');
+  }
+
+  updateEmployeeDetails(
+    
+  )
+
   }
