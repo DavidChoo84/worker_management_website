@@ -54,15 +54,15 @@
           </ng-container>
           <ng-container matColumnDef="create">
             <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
-            <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'green'}">person_add</mat-icon></td>
+            <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'green'}" [routerLink]="['/employee_crud', 'view-employee-details', element.id]">person_add</mat-icon></td>
           </ng-container>
           <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
-            <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'orange'}"  [routerLink]="['/employee_crud','update-employee', element.id]">edit</mat-icon></td>
+            <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'orange'}" [routerLink]="['/employee_crud','update-employee', element.id]">edit</mat-icon></td>
           </ng-container>
           <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
-            <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'red'}" [routerLink]="['/employee_crud', 'view-employee-details', element.id]">delete</mat-icon></td>
+            <td mat-cell *matCellDef="let element"><mat-icon [ngStyle]="{'color':'red'}" (click)="deleteEmployee(element.id, element?.photo)">delete</mat-icon></td>
           </ng-container>
           <ng-container matColumnDef="action">
             <th class="text-center" mat-header-cell *matHeaderCellDef>Action</th>

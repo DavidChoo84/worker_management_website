@@ -107,4 +107,9 @@ export class EmployeecrudService {
     )
   }
 
+  deleteEmployee(employeeID:any,emp_photo:any): Observable<HttpResponse>{
+    const url = environment.API_EndPoint + 'deleteemployee.php?id=' + employeeID+"&image="+emp_photo;
+    return this.httpClient.get<HttpResponse>(url).pipe(map(data => data));
+  }
+
   }
