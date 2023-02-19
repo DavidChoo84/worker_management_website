@@ -51,12 +51,12 @@ export class EmployeeFormComponent implements OnInit {
     this.createEmployeeForm();
     this.alertmsg=false;
 
-    // if(this.activatedRoute.snapshot.params['employeeID']){
-    //   let employeeID = this.activatedRoute.snapshot.params['employeeID'];
-    //   if(employeeID !== ''){
-    //     this.loadEmployeeDetails(employeeID);
-    //   }
-    // }
+    if(this.activatedRoute.snapshot.params['employeeID']){
+      let employeeID = this.activatedRoute.snapshot.params['employeeID'];
+      if(employeeID !== ''){
+        this.loadEmployeeDetails(employeeID);
+      }
+    }
   }
   createEmployeeForm(){
     this.employeeForm = this.formBuilder.group({
@@ -71,6 +71,34 @@ export class EmployeeFormComponent implements OnInit {
       'emp_socsoNo': ['', Validators.compose([Validators.required]) ],
       'supervisor_id': ['', Validators.compose([Validators.required]) ],
     })
+  }
+  loadEmployeeDetails(employeeID:any){
+    this.TitleText = "Update Employee Details"
+    this.buttonText = "Add Employee";
+      this.employeeService.loadEmployeeInfo(employeeID).subscribe(res=>{
+        this.employeeForm.controls['emp_id'].setValue(res.emp_id);
+        this.employeeForm.controls['emp_name'].setValue(res.emp_name);
+        this.employeeForm.controls['emp_gender'].setValue(res.emp_gender);
+        this.employeeForm.controls['emp_passport'].setValue(res.emp_passport);
+        this.employeeForm.controls['emp_arrival_dt'].setValue(res.emp_arrival_dt);
+        this.employeeForm.controls['emp_contact_no'].setValue(res.emp_contact_no);
+        this.employeeForm.controls['emp_call_no'].setValue(res.emp_call_no);
+        this.employeeForm.controls['emp_socsoNo'].setValue(res.emp_socsoNo);
+        this.employeeForm.controls['supervisor_id'].setValue(res.supervisor_id);
+        this.employeeId = res.emp_id;
+
+        // const fileInput = document.querySelector('input[type="file"]');
+
+        // // Create a new File object
+        // const myFile = new File([""], res.zone_qr, {
+        //     type: 'text/plain'
+        // });
+
+        // // Now let's create a DataTransfer to get a FileList
+        // const dataTransfer = new DataTransfer();
+        // dataTransfer.items.add(myFile);
+      
+      })
   }
 
   navigateTo(router:any){
@@ -115,54 +143,59 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
   submitImage(){
-   
-    // if(this.employeeId){
+    if(this.employeeId){
 
-    //   this.employeeForm.controls['emp_id'].markAsTouched();
-    //   this.employeeForm.controls['emp_name'].markAsTouched();
-    //   this.employeeForm.controls['emp_gender'].markAsTouched();
-    //   this.employeeForm.controls['emp_photo'].markAsTouched();
-    //   this.employeeForm.controls['emp_passport'].markAsTouched();
-    //   this.employeeForm.controls['emp_arrival_dt'].markAsTouched();
-    //   this.employeeForm.controls['emp_contact_no'].markAsTouched();
-    //   this.employeeForm.controls['emp_call_no'].markAsTouched();
-    //   this.employeeForm.controls['emp_socsoNo'].markAsTouched();
-    //   this.employeeForm.controls['supervisor_id'].markAsTouched();
-    //   //for update zone details  
-    //   this.employeeForm.value.image = this.currentFile;
-    //   console.log(this.employeeForm.value.emp_id);
-    //   console.log(this.employeeForm.value.emp_name);
-    //   console.log(this.employeeForm.value.emp_gender);
-    //   console.log(this.employeeForm.value.emp_photo);
-    //   console.log(this.employeeForm.value.emp_passport);
-    //   console.log(this.employeeForm.value.emp_arrival_dt);
-    //   console.log(this.employeeForm.value.emp_contact_no);
-    //   console.log(this.employeeForm.value.emp_call_no);
-    //   console.log(this.employeeForm.value.emp_socsoNo);
-    //   console.log(this.employeeForm.value.supervisor_id);
+      this.employeeForm.controls['emp_id'].markAsTouched();
+      this.employeeForm.controls['emp_name'].markAsTouched();
+      this.employeeForm.controls['emp_gender'].markAsTouched();
+      this.employeeForm.controls['emp_photo'].markAsTouched();
+      this.employeeForm.controls['emp_passport'].markAsTouched();
+      this.employeeForm.controls['emp_arrival_dt'].markAsTouched();
+      this.employeeForm.controls['emp_contact_no'].markAsTouched();
+      this.employeeForm.controls['emp_call_no'].markAsTouched();
+      this.employeeForm.controls['emp_socsoNo'].markAsTouched();
+      this.employeeForm.controls['supervisor_id'].markAsTouched();
+      //for update zone details  
+      this.employeeForm.value.image = this.currentFile;
+      console.log(this.employeeForm.value.emp_id);
+      console.log(this.employeeForm.value.emp_name);
+      console.log(this.employeeForm.value.emp_gender);
+      console.log(this.employeeForm.value.emp_photo);
+      console.log(this.employeeForm.value.emp_passport);
+      console.log(this.employeeForm.value.emp_arrival_dt);
+      console.log(this.employeeForm.value.emp_contact_no);
+      console.log(this.employeeForm.value.emp_call_no);
+      console.log(this.employeeForm.value.emp_socsoNo);
+      console.log(this.employeeForm.value.supervisor_id);
       
       
-    //   this.employeeService.updateProductDetails(
-    //     this.zoneForm.value.zone_id,
-    //     this.zoneForm.value.zone_name,
-    //     this.zoneForm.value.site_id,
-    //     this.zoneForm.value.image
-    //   ).subscribe((event: HttpEvent<any>): void =>{
-    //     switch(event.type){
-    //       case HttpEventType.UploadProgress:
-    //         if(event.total){
-    //           this.progress = Math.round((100 / event.total) * event.loaded);
-    //           this.msgs = `Uploaded! ${this.progress}%`;
-    //         }
-    //         break;
-    //         case HttpEventType.Response:
-    //             event.body;
-    //             console.log("test"+event.body);
-    //             this.navigateTo('/zone_crud/zone-list');
-    //       }
-    //   })
-    // }
-    // else{
+      this.employeeService.updateEmployeeDetails(
+        this.employeeForm.value.emp_id,
+        this.employeeForm.value.emp_name,
+        this.employeeForm.value.emp_gender,
+        this.employeeForm.value.image,
+        this.employeeForm.value.emp_passport,
+        this.employeeForm.value.emp_arrival_dt,
+        this.employeeForm.value.emp_contact_no,
+        this.employeeForm.value.emp_call_no,
+        this.employeeForm.value.emp_socsoNo,
+        this.employeeForm.value.supervisor_id
+      ).subscribe((event: HttpEvent<any>): void =>{
+        switch(event.type){
+          case HttpEventType.UploadProgress:
+            if(event.total){
+              this.progress = Math.round((100 / event.total) * event.loaded);
+              this.msgs = `Uploaded! ${this.progress}%`;
+            }
+            break;
+            case HttpEventType.Response:
+              event.body;
+              console.log("test"+event.body);
+              this.navigateTo('/employee_crud/employee-list');
+          }
+      })
+    }
+    else{
       this.employeeForm.controls['emp_id'].markAsTouched();
       this.employeeForm.controls['emp_name'].markAsTouched();
       this.employeeForm.controls['emp_gender'].markAsTouched();
@@ -225,7 +258,7 @@ export class EmployeeFormComponent implements OnInit {
             }
           }
       })
-    //}
+    }
 
   }
 

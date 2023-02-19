@@ -190,7 +190,7 @@
               </div>  
             </div>
             <div class="text-center">
-              <button type="submit" id="create" class="btn" [disabled]="!employeeForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../add-employee']"><i class="bi bi-plus"></i>Add Employee</button>
+              <button type="submit" id="create" class="btn" [disabled]="!employeeForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../add-employee']"><i class="bi bi-plus"></i>{{buttonText}</button>
               <button type="submit" id="list" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../employee-list']">Employee List</button>
             </div>
           </form>
