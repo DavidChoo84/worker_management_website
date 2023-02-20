@@ -30,23 +30,23 @@
     <div class="offcanvas-body" *ngFor="let admin of this.adminList">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             <li class="nav-item">
-                <a routerLink="/zone" class="main nav-link p-0" *ngIf="admin.adm_level == 'Manager'">
+                <a routerLink="/zone" class="main nav-link p-0">
                     <i class="bi bi-house-fill"></i> <span class="ms-1">Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a routerLink="/employee" class="main nav-link p-0">
+                <a routerLink="employee_crud/employee-list" class="main nav-link p-0">
                     <i class="bi bi-person-fill"></i> <span class="ms-1">Employee</span>
                 </a>
                 <ul>
                     <li>
-                        <a class="sub nav-link p-0">
+                        <a class="sub nav-link p-0" routerLink="employee_crud/add-employee" *ngIf="admin.adm_level == 'Project Manager' && admin.adm_level == 'Project Director'">
                             <i class="bi bi-person-plus-fill"></i><span class="ms-1">Add Employee</span>
                         </a> 
                     </li>
                     <li>
-                        <a href="#" class="sub nav-link p-0">
-                            <i class="bi bi-people-fill"></i> <span class="ms-1">All Employee</span>
+                        <a href="#" class="sub nav-link p-0" routerLink="employee_crud/employee-list">
+                            <i class="bi bi-people-fill"></i> <span class="ms-1">Employee List</span>
                         </a> 
                     </li>
                 </ul>
