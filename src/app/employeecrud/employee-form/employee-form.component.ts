@@ -16,7 +16,7 @@ export class EmployeeFormComponent implements OnInit {
   [x: string]: any;
   employeeForm: FormGroup;
   employeeId: any;
-  buttonText: 'Add Employee';
+  buttonText= 'Add Employee';
   TitleText = 'Add New Employee';
   msgs: any;
   alertmsg!:boolean;
@@ -74,7 +74,7 @@ export class EmployeeFormComponent implements OnInit {
   }
   loadEmployeeDetails(employeeID:any){
     this.TitleText = "Update Employee Details"
-    this.buttonText = "Add Employee";
+    this.buttonText = "Update Employee";
       this.employeeService.loadEmployeeInfo(employeeID).subscribe(res=>{
         this.employeeForm.controls['emp_id'].setValue(res.emp_id);
         this.employeeForm.controls['emp_name'].setValue(res.emp_name);
@@ -160,7 +160,7 @@ export class EmployeeFormComponent implements OnInit {
       console.log(this.employeeForm.value.emp_id);
       console.log(this.employeeForm.value.emp_name);
       console.log(this.employeeForm.value.emp_gender);
-      console.log(this.employeeForm.value.emp_photo);
+      console.log(this.employeeForm.value.image);
       console.log(this.employeeForm.value.emp_passport);
       console.log(this.employeeForm.value.emp_arrival_dt);
       console.log(this.employeeForm.value.emp_contact_no);
