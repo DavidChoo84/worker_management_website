@@ -11,7 +11,8 @@ export class ApiService {
     redirectUrl: string;
     baseUrl:string = "http://localhost/web_apinew";
     @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-    
+    @Output() updateAdminList: EventEmitter<any> = new EventEmitter();
+
     constructor(private httpClient : HttpClient) { }
     public userlogin(username: any, password: any) {
         alert(username)
@@ -21,6 +22,7 @@ export class ApiService {
                 this.setToken(Users[0].name);
                 this.setUserData(Users[0]);
                 this.getLoggedInName.emit(true);
+                this.updateAdminList.emit(true);
                 return Users;
             }));
         }
@@ -30,12 +32,18 @@ export class ApiService {
 
     setUserData(userData: any) {
         localStorage.setItem('userdata', JSON.stringify(userData));
+        console.log(userData);
     }
 
     getUserData() {
         const userData = localStorage.getItem('userdata');
         return JSON.parse(userData ||'{}');
         
+    }
+
+    deleteUserData(){
+        const userData = localStorage.removeItem('userdata');
+        console.log(userData);
     }
 
     setToken(token: any) {
