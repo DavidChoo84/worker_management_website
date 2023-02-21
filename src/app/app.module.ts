@@ -51,7 +51,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { SiteComponent } from './site/site.component';
-import {MatDatepickerModule} from '@angular/material';
+
 
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -105,7 +105,6 @@ import { NavbarService } from './navbar.service';
     MatSortModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatDatepickerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideMessaging(() => getMessaging()),
     NgbModule,
