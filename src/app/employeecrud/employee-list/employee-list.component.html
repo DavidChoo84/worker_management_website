@@ -2,13 +2,13 @@
 <div class="content">
     <div class="row align-items-center">
         <div class="col-12">
-            <a class="hyperlink" routerLink="/zone">Employee List</a>
+            <a class="hyperlink" routerLink="/employee_crud/employee-list">Employee List</a>
         </div>
         <div class="col-6">
             <h3>Employee List</h3>
         </div>
         <div class="col-6">
-            <p class="text-end"><span>+ Add Employee</span></p>
+            <p class="text-end" routerLink="/employee_crud/add-employee"><span>+ Add Employee</span></p>
         </div>
     </div>
     <hr>
@@ -67,14 +67,15 @@
           <ng-container matColumnDef="action">
             <th class="text-center" mat-header-cell *matHeaderCellDef>Action</th>
             <td class="text-center" mat-cell *matCellDef="let element">
-              <button class="btn btn-success btn-block">Preview</button>
+              <button class="btn btn-success btn-block" (click)="open(element.id)">Preview</button>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <!-- Angular 8 pagination -->
-
-        <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+        <div class="paginator-container">
+          <mat-paginator aria-label="Select page" [length]="200" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+        </div>
       </div>
 </div>

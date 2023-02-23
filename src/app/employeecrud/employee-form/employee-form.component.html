@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
       <div class="content">
-        <a class="hyperlink" routerLink="/zone">Employee List </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> Add Employee</a></span>
+        <a class="hyperlink" routerLink="/employee_crud/employee-list">Employee List </a><span><i class="bi bi-caret-right-fill"></i><a class="hyperlink" routerLink="/zone_summary"> {{this.buttonText}}</a></span>
         <h3>{{this.TitleText}}</h3>
         <hr>
         <div class="bordered col-12 pb-3">
@@ -190,8 +190,7 @@
               </div>  
             </div>
             <div class="text-center">
-              <button type="submit" id="create" class="btn" [disabled]="!employeeForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../add-employee']"><i class="bi bi-plus"></i>{{buttonText}</button>
-              <button type="submit" id="list" class="btn btn-primary" [routerLinkActive]="'btn-warning'"[routerLink]="['../employee-list']">Employee List</button>
+              <button type="submit" id="create" class="btn" [disabled]="!employeeForm.valid" [routerLinkActive]="'btn-success'"[routerLink]="['../add-employee']"><i class=""></i>{{buttonText}}</button>
             </div>
           </form>
           

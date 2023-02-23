@@ -1,3 +1,4 @@
+
 .content{
     padding-top: 65px;
 }
@@ -123,9 +124,9 @@ th.mat-sort-header-sorted {
   }
 
 th{
-    background-color: grey;
-    font-weight: 800;
-    font-size: 15px;
+    background-color: #1481d3;
+    font-weight: 800!important;
+    font-size: 15px!important;
 }
 
 td{
@@ -139,10 +140,10 @@ span{
 }
 
 .mat-paginator{
-    font-weight: 800;
-    font-size: 15px;
-    background-color: grey;
-    border: 2px solid black;
+    font-weight: 500!important;
+    font-size: 15px!important;
+    background-color: #1481d3!important;
+    border: 2px solid black!important;
 }
 
 img{
