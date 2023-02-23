@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { EmployeecrudService } from '../employeecrud.service';
 import { EmployeeReportModal } from 'src/app/modal/employee-report/employee-report.modal';
 import { EmployeeReport } from 'src/app/models/employee';
+import { EmployeeService } from 'src/app/employee.service';
 import { NavbarService } from 'src/app/navbar.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from '../models/employee';
@@ -24,12 +25,35 @@ export class EmployeeListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  currentMonth: any;
+  currentYear: any;
+  monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEPT", "OCT", "NOV", "DEC"];
+  empData: EmployeeReport = {
+    id: "",
+    gender: "Male",
+    name: "",
+    passportNo: "",
+    socsoId: "",
+    basicPay: 1500,
+    overtime: 0,
+    empSocso: 0,
+    empEis: 0,  
+    totalEarnings: 0,
+    nett: 0
+  };
+
   constructor(
     public nav: NavbarService,
     public employeeService: EmployeecrudService,
     private cdr: ChangeDetectorRef,
-    private modalService: NgbModal
-  ) { }
+    private modalService: NgbModal,
+    public employeeService1: EmployeeService
+  ) {
+
+    const date = new Date();
+    this.currentMonth = this.monthNames[date.getMonth()];
+    this.currentYear = date.getFullYear();
+   }
 
   ngOnInit(): void {
     this.nav.show();
@@ -79,7 +103,25 @@ export class EmployeeListComponent implements OnInit {
         });
       }
     });
+  }
 
-    
+  open(id: any){
+    this.employeeService1.retrieveEmployeeReportDetails(id).subscribe(r => {
+      let message = Object.values(r)[0];
+      this.empData.id = message?.id;
+      this.empData.gender = message?.gender;
+      this.empData.name = message?.name;
+      this.empData.passportNo = message?.passportNo;
+      this.empData.socsoId = message?.socsoId;
+      this.empData.empSocso = this.empData?.basicPay * (1.25/100);
+      this.empData.empEis = this.empData?.basicPay * (1.25/100);
+      this.empData.totalEarnings = this.empData?.basicPay;
+      this.empData.nett = this.empData?.basicPay;
+
+      const modal = this.modalService.open(EmployeeReportModal, {centered: true, size: "xl"});
+      modal.componentInstance.data = this.empData;
+      modal.componentInstance.currentMonth = this.currentMonth;
+      modal.componentInstance.currentYear = this.currentYear;
+  });
   }
 }

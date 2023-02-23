@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
   loginbtn:boolean;
   logoutbtn:boolean;
 
-  constructor(private dataService: ApiService) {
+  constructor(private dataService: ApiService, public router: Router) {
     dataService.getLoggedInName.subscribe(name => this.changeName(name));
     if(this.dataService.isLoggedIn())
     {

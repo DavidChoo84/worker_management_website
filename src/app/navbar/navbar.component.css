@@ -26,7 +26,6 @@
     margin-right: 5px;
 }
 .navbar-brand{
-    filter: invert(90%) sepia(92%) saturate(7500%) hue-rotate(2deg) brightness(114%) contrast(119%);
 }
 .navbar-brand:hover{
     filter: invert(99%) sepia(83%) saturate(0%) hue-rotate(357deg) brightness(105%) contrast(100%);
