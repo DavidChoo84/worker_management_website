@@ -56,6 +56,7 @@ import { SiteComponent } from './site/site.component';
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarService } from './navbar.service';
+import { DateRangePickerComponent } from './modal/date-range-picker/date-range-picker.component';
 
 @NgModule({
   declarations: [
@@ -67,8 +68,8 @@ import { NavbarService } from './navbar.service';
     HomeComponent,
     ZoneComponent,
     SiteComponent,
-    EmployeeReportModal
-
+    EmployeeReportModal,
+    DateRangePickerComponent,
   ],
   imports: [
     FormsModule,

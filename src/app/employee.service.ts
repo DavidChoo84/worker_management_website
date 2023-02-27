@@ -24,4 +24,13 @@ export class EmployeeService {
     retrieveEmployeeDetails(){
       return this.httpClient.get(this.baseUrl + 'employeeDetails.php');
     }
+
+    retrieveWorkingTime(id: any, startDate: any, endDate: any){
+      return this.httpClient.get(this.baseUrl + 'clockInOut.php?id=' + id + '&startDate=' + startDate + '&endDate=' + endDate);
+    }
+
+    retrieveAssignID(employeeID: any){
+      return this.httpClient.get(this.baseUrl + 'retrieveEmployeeID.php?employeeID=' + employeeID);
+    }
+    
 }

@@ -10,6 +10,7 @@ import { NavbarService } from 'src/app/navbar.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from '../models/employee';
 import Swal from 'sweetalert2';
+import { DateRangePickerComponent } from 'src/app/modal/date-range-picker/date-range-picker.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -22,25 +23,15 @@ export class EmployeeListComponent implements OnInit {
   dataSource : any = [];
   show: boolean = false;
   employeeListSubscribe: any;
+  rangeDates: Date[];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   currentMonth: any;
   currentYear: any;
+  firstDay: any;
+  lastDay: any;
   monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEPT", "OCT", "NOV", "DEC"];
-  empData: EmployeeReport = {
-    id: "",
-    gender: "Male",
-    name: "",
-    passportNo: "",
-    socsoId: "",
-    basicPay: 1500,
-    overtime: 0,
-    empSocso: 0,
-    empEis: 0,  
-    totalEarnings: 0,
-    nett: 0
-  };
 
   constructor(
     public nav: NavbarService,
@@ -53,6 +44,11 @@ export class EmployeeListComponent implements OnInit {
     const date = new Date();
     this.currentMonth = this.monthNames[date.getMonth()];
     this.currentYear = date.getFullYear();
+    let firstDate = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    this.firstDay = firstDate.getFullYear() + "-" + (firstDate.getMonth() + 1) + "-" + firstDate.getDate();
+    this.lastDay = lastDay.getFullYear() + "-" + (lastDay.getMonth() + 1) + "-" + lastDay.getDate();
+    this.rangeDates = [ firstDate, lastDay];  
    }
 
   ngOnInit(): void {
@@ -63,7 +59,6 @@ export class EmployeeListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Employee>(this.employeeList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.dataSource);
     })
   }
   getEmployeeList(){
@@ -90,9 +85,7 @@ export class EmployeeListComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result: { isConfirmed: any; }) => {
       if (result.isConfirmed) {
-        console.log(params,photo);
         this.employeeService.deleteEmployee(params,photo).subscribe(res =>{
-          console.log("remove");
           if(res.result === 'success'){
             this.getEmployeeList();
             Swal.fire(
@@ -105,23 +98,22 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  open(id: any){
-    this.employeeService1.retrieveEmployeeReportDetails(id).subscribe(r => {
-      let message = Object.values(r)[0];
-      this.empData.id = message?.id;
-      this.empData.gender = message?.gender;
-      this.empData.name = message?.name;
-      this.empData.passportNo = message?.passportNo;
-      this.empData.socsoId = message?.socsoId;
-      this.empData.empSocso = this.empData?.basicPay * (1.25/100);
-      this.empData.empEis = this.empData?.basicPay * (1.25/100);
-      this.empData.totalEarnings = this.empData?.basicPay;
-      this.empData.nett = this.empData?.basicPay;
+  openDate(){ //open date popup to select date
+    const modalRef = this.modalService.open(DateRangePickerComponent, {centered: true, size: "md"});
+    modalRef.componentInstance.rangeDates = this.rangeDates; //pass the first day and last day of current month
+    modalRef.result.then(date => {
+      this.rangeDates = date; // date == selected Date
+      this.firstDay = this.rangeDates[0].getFullYear() + "-" + (this.rangeDates[0].getMonth() + 1) + "-" + this.rangeDates[0].getDate();
+      this.lastDay = this.rangeDates[1].getFullYear() + "-" + (this.rangeDates[1].getMonth() + 1) + "-" + this.rangeDates[1].getDate();
+    })
+  }
 
-      const modal = this.modalService.open(EmployeeReportModal, {centered: true, size: "xl"});
-      modal.componentInstance.data = this.empData;
-      modal.componentInstance.currentMonth = this.currentMonth;
-      modal.componentInstance.currentYear = this.currentYear;
-  });
+  open(id: any){ //open the Report Preview
+    const modal = this.modalService.open(EmployeeReportModal, {centered: true, size: "xl"});
+      modal.componentInstance.currentMonth = this.currentMonth; // pass current month to Preview 
+      modal.componentInstance.currentYear = this.currentYear; // pass current year to Preview
+      modal.componentInstance.id = id; // pass the employee ID to Preview
+      modal.componentInstance.firstDay = this.firstDay;
+      modal.componentInstance.lastDay = this.lastDay;
   }
 }
