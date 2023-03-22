@@ -66,9 +66,6 @@ export class EmployeeDetailsComponent implements OnInit {
       this.employeeId = res.emp_id;
       this.imageInfos = res.emp_photo;
       this.url = environment.API_EndPoint + 'uploads/'+this.imageInfos;
-      console.log(res.emp_call_no)
-      console.log(this.employeeId);
-      console.log(this.url);
 
     })
   }

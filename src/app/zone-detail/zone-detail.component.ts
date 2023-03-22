@@ -104,7 +104,6 @@ confirm2() {
       this.zoneID = res.zone_id;
       this.clockrecord = res.ClockRecord;
       this.assignrecord = res.AssignRecords;
-      console.log(this.sitename);
     })
   }
 
@@ -129,12 +128,6 @@ confirm2() {
   }
 
   assignEmp(){
-
-      console.log(this.AssignForm.value.empid);
-      console.log(this.AssignForm.value.time);
-      console.log(this.zoneID);
-      console.log(this.adm_id);
-    
       this.crudService.assignEmp(
         this.AssignForm.value.empid,
         this.AssignForm.value.time ,
@@ -148,8 +141,6 @@ confirm2() {
           case HttpEventType.Response:
             event.body;
             this.eventmsg = event.body;
-            
-            console.log(this.eventmsg);
             // if(this.eventmsg.search(this.alert) != -1){
             // // if(this.eventmsg===this.alert){
             //     this.alertmsg = false;
@@ -167,13 +158,7 @@ confirm2() {
 
   assignBatch(){
 
-    console.log(this.AssignBatchForm.value.empid);
-    console.log(this.AssignBatchForm.value.time);
-    console.log(this.zoneID);
-    console.log(this.adm_id);
-    
     for (var i = 0; i <= this.AssignBatchForm.value.empid.length; i++) {
-      console.log(this.AssignBatchForm.value.empid[i].emp_id);
       this.crudService.assignBatch(
         this.AssignBatchForm.value.empid[i].emp_id,
         this.AssignBatchForm.value.time ,
@@ -187,8 +172,6 @@ confirm2() {
           case HttpEventType.Response:
             event.body;
             this.eventmsg = event.body;
-            
-            console.log(this.eventmsg);
           }
       })
     }

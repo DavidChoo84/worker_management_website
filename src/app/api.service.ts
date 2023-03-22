@@ -15,8 +15,6 @@ export class ApiService {
 
     constructor(private httpClient : HttpClient) { }
     public userlogin(username: any, password: any) {
-        alert(username)
-        alert(password)
         return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
             .pipe(map(Users => {
                 this.setToken(Users[0].name);
@@ -32,7 +30,6 @@ export class ApiService {
 
     setUserData(userData: any) {
         localStorage.setItem('userdata', JSON.stringify(userData));
-        console.log(userData);
     }
 
     getUserData() {
@@ -43,7 +40,6 @@ export class ApiService {
 
     deleteUserData(){
         const userData = localStorage.removeItem('userdata');
-        console.log(userData);
     }
 
     setToken(token: any) {

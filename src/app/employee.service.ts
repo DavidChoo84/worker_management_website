@@ -29,8 +29,8 @@ export class EmployeeService {
       return this.httpClient.get(this.baseUrl + 'clockInOut.php?id=' + id + '&startDate=' + startDate + '&endDate=' + endDate);
     }
 
-    retrieveAssignID(employeeID: any){
-      return this.httpClient.get(this.baseUrl + 'retrieveEmployeeID.php?employeeID=' + employeeID);
+    retrieveAllWorkingTime(startDate: any, endDate: any){
+      return this.httpClient.get(this.baseUrl + 'allClockInOut.php?startDate=' + startDate + '&endDate=' + endDate);
     }
     
 }

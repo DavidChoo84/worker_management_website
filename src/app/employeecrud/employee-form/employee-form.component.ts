@@ -133,12 +133,10 @@ export class EmployeeFormComponent implements OnInit {
         const reader = new FileReader();
   
         reader.onload = (e: any) => {
-          console.log(e.target.result);
           this.preview = e.target.result;
         };
   
         reader.readAsDataURL(this.currentFile);
-        console.log(this.currentFile);
       }
     }
   }
@@ -157,16 +155,6 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeForm.controls['supervisor_id'].markAsTouched();
       //for update zone details  
       this.employeeForm.value.image = this.currentFile;
-      console.log(this.employeeForm.value.emp_id);
-      console.log(this.employeeForm.value.emp_name);
-      console.log(this.employeeForm.value.emp_gender);
-      console.log(this.employeeForm.value.image);
-      console.log(this.employeeForm.value.emp_passport);
-      console.log(this.employeeForm.value.emp_arrival_dt);
-      console.log(this.employeeForm.value.emp_contact_no);
-      console.log(this.employeeForm.value.emp_call_no);
-      console.log(this.employeeForm.value.emp_socsoNo);
-      console.log(this.employeeForm.value.supervisor_id);
       
       
       this.employeeService.updateEmployeeDetails(
@@ -190,7 +178,6 @@ export class EmployeeFormComponent implements OnInit {
             break;
             case HttpEventType.Response:
               event.body;
-              console.log("test"+event.body);
               this.navigateTo('/employee_crud/employee-list');
           }
       })
@@ -208,16 +195,6 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeForm.controls['supervisor_id'].markAsTouched();
 
       this.employeeForm.value.image = this.currentFile;
-      console.log(this.employeeForm.value.emp_id);
-      console.log(this.employeeForm.value.emp_name);
-      console.log(this.employeeForm.value.emp_gender);
-      console.log(this.employeeForm.value.image);
-      console.log(this.employeeForm.value.emp_passport);
-      console.log(this.employeeForm.value.emp_arrival_dt);
-      console.log(this.employeeForm.value.emp_contact_no);
-      console.log(this.employeeForm.value.emp_call_no);
-      console.log(this.employeeForm.value.emp_socsoNo);
-      console.log(this.employeeForm.value.supervisor_id);
       
       this.employeeService.createEmployee(
         this.employeeForm.value.emp_id,
@@ -243,8 +220,6 @@ export class EmployeeFormComponent implements OnInit {
             this.eventmsg = event.body;
             this.alert = "{\"result\":\"success1\"}File has been uploaded"; 
             //this.alertno = "{\"error\":\"Sorry. File is already exist\"}";
-            console.log(this.eventmsg);
-            console.log(this.alert);
             if(this.eventmsg.search(this.alert) != -1){
             // if(this.eventmsg===this.alert){
                 this.alertmsg = false;

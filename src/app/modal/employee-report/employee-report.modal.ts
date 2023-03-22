@@ -50,24 +50,26 @@ export class EmployeeReportModal implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeService.retrieveAssignID(this.id).subscribe(res => { // retrieve assign id of employee by EmployeeID
-      this.employeeService.retrieveWorkingTime(res, this.firstDay, this.lastDay).subscribe(r => { 
+      this.employeeService.retrieveWorkingTime(this.id, this.firstDay, this.lastDay).subscribe(r => { 
         // retrieve first "Clock In" and last "Clock Out" from first day to last day
         this.normalTime = 0;
         this.normalOvertime = 0;
         this.totalWorkingTime = 0;
-        if(res){
+        if(r){
           for (let i = 0; i < Object.values(r).length; i++){      
-            var day = new Date(Object.values(r)[i][0].min_date).getDay(); // get weekday (eg: 0 == Sunday...)
+            var day = new Date(Object.values(r)[i].min_date).getDay(); // get weekday (eg: 0 == Sunday...)
             var minMinutes = 0;
             var maxMinutes = 0;
-            var minHour = (new Date(Object.values(r)[i][0].min_date).getHours())*60;
-            var maxHour = (new Date(Object.values(r)[i][0].max_date).getHours())*60;
+            var minHour = (new Date(Object.values(r)[i].min_date).getHours())*60;
+            var maxHour = (new Date(Object.values(r)[i].max_date).getHours())*60;
+            
             if (minHour < 480){ // if "Clock In" time is less than 08:00 (8*60 = 480), will take 08:00
               minHour = minHour + 60;
             } 
+            
             var minTotal = minHour + minMinutes;
             var maxTotal = maxHour + maxMinutes;
+            
             var diff = (Math.floor((maxTotal - minTotal)/60)) - 1;
             this.totalWorkingTime += diff; //each day total working time
             if (diff > 8){ // if each day working time over 8 hours
@@ -87,7 +89,7 @@ export class EmployeeReportModal implements OnInit {
         
       })
       
-    })
+    
 
     this.employeeService.retrieveEmployeeReportDetails(this.id).subscribe(r => { // retrieve report details
       let message = Object.values(r)[0];

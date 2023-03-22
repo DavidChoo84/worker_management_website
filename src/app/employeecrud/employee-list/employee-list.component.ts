@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { EmployeecrudService } from '../employeecrud.service';
 import { EmployeeReportModal } from 'src/app/modal/employee-report/employee-report.modal';
+import { EmployeeClockInOutComponent } from 'src/app/modal/employee-clock-in-out/employee-clock-in-out.component';
 import { EmployeeReport } from 'src/app/models/employee';
 import { EmployeeService } from 'src/app/employee.service';
 import { NavbarService } from 'src/app/navbar.service';
@@ -64,7 +65,6 @@ export class EmployeeListComponent implements OnInit {
   getEmployeeList(){
     this.employeeListSubscribe = this.employeeService.retrieveEmployeeDetails().subscribe(res => {
       this.dataSource = res;
-      console.log(res);
     })
   }
   applyFilter(filterValue: string) {
@@ -113,6 +113,23 @@ export class EmployeeListComponent implements OnInit {
       modal.componentInstance.currentMonth = this.currentMonth; // pass current month to Preview 
       modal.componentInstance.currentYear = this.currentYear; // pass current year to Preview
       modal.componentInstance.id = id; // pass the employee ID to Preview
+      modal.componentInstance.firstDay = this.firstDay;
+      modal.componentInstance.lastDay = this.lastDay;
+  }
+
+  openReport(id: any){ //open the Report Preview
+    const modal = this.modalService.open(EmployeeClockInOutComponent, {centered: true, size: "xl"});
+      modal.componentInstance.currentMonth = this.currentMonth; // pass current month to Preview 
+      modal.componentInstance.currentYear = this.currentYear; // pass current year to Preview
+      modal.componentInstance.id = id; // pass the employee ID to Preview
+      modal.componentInstance.firstDay = this.firstDay;
+      modal.componentInstance.lastDay = this.lastDay;
+  }
+
+  openAllReport(){ //open the Report Preview
+    const modal = this.modalService.open(EmployeeClockInOutComponent, {centered: true, size: "xl"});
+      modal.componentInstance.currentMonth = this.currentMonth; // pass current month to Preview 
+      modal.componentInstance.currentYear = this.currentYear; // pass current year to Preview
       modal.componentInstance.firstDay = this.firstDay;
       modal.componentInstance.lastDay = this.lastDay;
   }
