@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 // COMPONENT
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { ZoneDetailComponent } from './zone-detail/zone-detail.component';
 import { ZoneComponent } from './zone/zone.component';
 
@@ -56,19 +55,21 @@ import { SiteComponent } from './site/site.component';
 import { EmployeeReportModal } from './modal/employee-report/employee-report.modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarService } from './navbar.service';
+import { DateRangePickerComponent } from './modal/date-range-picker/date-range-picker.component';
+import { EmployeeClockInOutComponent } from './modal/employee-clock-in-out/employee-clock-in-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    EmployeeComponent,
     ZoneDetailComponent,
     HomeComponent,
     ZoneComponent,
     SiteComponent,
-    EmployeeReportModal
-
+    EmployeeReportModal,
+    DateRangePickerComponent,
+    EmployeeClockInOutComponent,
   ],
   imports: [
     FormsModule,

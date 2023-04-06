@@ -31,6 +31,5 @@ export class NavbarComponent implements OnInit {
   
   getAdmin() {
     this.adminList = [this.api.getUserData()];
-    console.log(this.adminList);
   }  
 }

@@ -33,7 +33,6 @@ export class ZoneComponent implements OnInit {
   getSiteName(){
     this.checkinlist = this.crudService.loadCheckIn().subscribe(res=>{
       this.checkinNo = res;
-      console.log(this.checkinNo);
       // this.rowData = res;
     })
 

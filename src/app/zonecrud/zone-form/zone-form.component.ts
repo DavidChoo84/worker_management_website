@@ -120,12 +120,10 @@ export class ZoneFormComponent implements OnInit {
         const reader = new FileReader();
   
         reader.onload = (e: any) => {
-          console.log(e.target.result);
           this.preview = e.target.result;
         };
   
         reader.readAsDataURL(this.currentFile);
-        console.log(this.currentFile);
       }
     }
   }
@@ -139,10 +137,6 @@ export class ZoneFormComponent implements OnInit {
       this.zoneForm.controls['zone_qrcode'].markAsTouched();
       //for update zone details  
       this.zoneForm.value.image = this.currentFile;
-      console.log(this.zoneForm.value.zone_id);
-      console.log(this.zoneForm.value.zone_name);
-      console.log(this.zoneForm.value.image);
-      console.log(this.zoneForm.value.site_id);
       
       this.crudService.updateProductDetails(
         this.zoneForm.value.zone_id,
@@ -159,7 +153,6 @@ export class ZoneFormComponent implements OnInit {
             break;
             case HttpEventType.Response:
                 event.body;
-                console.log("test"+event.body);
                 this.navigateTo('/zone_crud/zone-list');
           }
       })
@@ -170,10 +163,6 @@ export class ZoneFormComponent implements OnInit {
       this.zoneForm.controls['zone_qrcode'].markAsTouched();
 
       this.zoneForm.value.image = this.currentFile;
-      console.log(this.zoneForm.value.zone_id);
-      console.log(this.zoneForm.value.zone_name);
-      console.log(this.zoneForm.value.image);
-      console.log(this.zoneForm.value.site_id);
       
       this.crudService.createZone(
         this.zoneForm.value.zone_id,
@@ -193,8 +182,6 @@ export class ZoneFormComponent implements OnInit {
             this.eventmsg = event.body;
             this.alert = "{\"result\":\"success1\"}File has been uploaded"; 
             this.alertno = "{\"error\":\"Sorry. File is already exist\"}";
-            console.log(this.eventmsg);
-            console.log(this.alert);
             if(this.eventmsg.search(this.alert) != -1){
             // if(this.eventmsg===this.alert){
                 this.alertmsg = false;

@@ -32,7 +32,6 @@ data => {
     this.router.navigate([redirect]);
 },
 error => {
-    console.log(this.dataService.redirectUrl);
 alert("Username or password is incorrect")
 });
 }

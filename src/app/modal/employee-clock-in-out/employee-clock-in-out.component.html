@@ -1,0 +1,42 @@
+<div class="btn-clear" role="button" (click)="close()" ngbAutofocus>
+    <i class="icon ico-close">X</i>
+</div>
+
+<div class="container">
+    <div class="card-title pb-1 pt-2 px-2">
+        <h3>Report</h3>
+    </div>
+    <div class="report">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>No. </th>
+        <th scope="col">Employee ID</th>
+        <th scope="col">First Zone Name</th>
+        <th scope="col">First Clock In</th>
+        <th scope="col">Last Zone Name</th>
+        <th scope="col">Last Clock Out</th>
+        <th scope="col">Total Working Hours</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let result of results, let i = index">
+        <td>{{i+1}}.</td>
+        <td>{{result.emp_id}}</td>
+        <td>{{result.min_zoneName}}</td>
+        <td>{{result.min_date}}</td>
+        <td>{{result.max_zoneName}}</td>
+        <td>{{result.max_date}}</td>
+        <td>{{result.totalWorkingHours}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+
+  <div class="container my-2">
+    <div class="row d-flex align-items-center justify-content-center">
+        <button class="btn btn-primary align-items-center" style="width: 150px; height: auto;" (click)="export()">Export</button>
+    </div>
+    
+</div>

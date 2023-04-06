@@ -1,0 +1,6 @@
+<div class="btn-clear" role="button" (click)="close()" ngbAutofocus>
+  <i class="icon ico-close">X</i>
+</div>
+<div class="container p-3 d-flex align-items-center justify-content-center">
+  <p-calendar [(ngModel)]="rangeDates" [showIcon]="true" [inline]="true" (ngModelChange)="chooseDate($event)" selectionMode="range" inputId="range"></p-calendar>
+</div>

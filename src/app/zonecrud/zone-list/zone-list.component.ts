@@ -41,9 +41,7 @@ export class ZoneListComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result: { isConfirmed: any; }) => {
       if (result.isConfirmed) {
-        console.log(params,zone_qrcode);
         this.crudService.deleteProduct(params,zone_qrcode).subscribe(res =>{
-          console.log("remove");
           if(res.result === 'success'){
             this.getZoneList();
             Swal.fire(
